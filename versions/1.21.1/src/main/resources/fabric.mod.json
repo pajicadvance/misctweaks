@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "misctweaks",
+  "version": "${version}",
+  "name": "MiscTweaks",
+  "description": "Patches out gameplay annoyances",
+  "authors": ["pajic"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.pajic.misctweaks.Main"
+    ]
+  },
+  "mixins": [
+    "misctweaks.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "1.21.1",
+    "owo-lib": "*"
+  }
+}
