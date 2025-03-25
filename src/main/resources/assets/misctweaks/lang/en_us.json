@@ -1,0 +1,14 @@
+{
+  "text.config.misctweaks.title": "MiscTweaks Config",
+  "text.config.misctweaks.option.sneakingPreventsBerryBushDamage": "Sneaking prevents berry bush damage",
+  "text.config.misctweaks.option.legArmorPreventsBerryBushDamage": "Leg armor prevents berry bush damage",
+  "text.config.misctweaks.option.elytraSwimTweak": "Elytra swim tweak",
+  "text.config.misctweaks.option.soulSpeedNoDamage": "No soul speed boots damage",
+  "text.config.misctweaks.option.creeperExplosionDropsAllItems": "Creeper explosion drops all items",
+  "text.config.misctweaks.option.fasterObsidianMining": "Faster obsidian mining",
+  "text.config.misctweaks.option.obsidianMiningSpeedMultiplier": "Obsidian mining speed multiplier",
+  "text.config.misctweaks.option.preventShulkerDuplication": "Prevent shulker duplication",
+  "text.config.misctweaks.option.flammableCobweb": "Flammable cobwebs",
+  "text.config.misctweaks.option.thornsNoDamage": "No thorns chestplate damage",
+  "text.config.misctweaks.option.randomizeDiscLoot": "Randomize music disc loot"
+}
