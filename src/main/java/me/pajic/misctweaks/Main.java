@@ -1,6 +1,7 @@
 package me.pajic.misctweaks;
 
 import me.pajic.misctweaks.config.ModConfig;
+import me.pajic.misctweaks.mixson.ResourceModifications;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -18,5 +19,7 @@ public class Main implements ModInitializer {
     ));
 
     @Override
-    public void onInitialize() {}
+    public void onInitialize() {
+        ResourceModifications.init();
+    }
 }

@@ -15,6 +15,7 @@ repositories {
     maven { url = "https://maven.parchmentmc.org" }
     maven { url = "https://maven.terraformersmc.com/" }
     maven { url = "https://maven.wispforest.io/releases/" }
+    maven { url = "https://jitpack.io" }
 }
 
 dependencies {
@@ -25,6 +26,7 @@ dependencies {
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
+    include(modImplementation("com.github.ramixin:mixson-fabric:${property("mixson_version")}"))
     modImplementation "net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}"
     modImplementation("com.terraformersmc:modmenu:${property("modmenu_version")}")
     annotationProcessor modImplementation("io.wispforest:owo-lib:${property("owo_version")}")

@@ -13,6 +13,7 @@ import io.wispforest.owo.config.annotation.Sync;
 public class ConfigModel {
     public boolean sneakingPreventsBerryBushDamage = true;
     public boolean legArmorPreventsBerryBushDamage = true;
+    public boolean lodestoneChangesBackport = true;
     public boolean elytraSwimTweak = true;
     public boolean soulSpeedNoDamage = true;
     public boolean thornsNoDamage = true;
