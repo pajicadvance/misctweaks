@@ -15,6 +15,9 @@ public class ModServerConfig {
     private static final ModConfigSpec.BooleanValue LEG_ARMOR_PREVENTS_BERRY_BUSH_DAMAGE = BUILDER
             .translation("text.config.misctweaks.option.legArmorPreventsBerryBushDamage")
             .define("legArmorPreventsBerryBushDamage", true);
+    private static final ModConfigSpec.BooleanValue LODESTONE_CHANGES_BACKPORT = BUILDER
+            .translation("text.config.misctweaks.option.lodestoneChangesBackport")
+            .define("lodestoneChangesBackport", true);
     private static final ModConfigSpec.BooleanValue ELYTRA_SWIM_TWEAK = BUILDER
             .translation("text.config.misctweaks.option.elytraSwimTweak")
             .define("elytraSwimTweak", true);
@@ -47,6 +50,7 @@ public class ModServerConfig {
 
     public static boolean sneakingPreventsBerryBushDamage = true;
     public static boolean legArmorPreventsBerryBushDamage = true;
+    public static boolean lodestoneChangesBackport = true;
     public static boolean elytraSwimTweak = true;
     public static boolean soulSpeedNoDamage = true;
     public static boolean thornsNoDamage = true;
@@ -71,6 +75,7 @@ public class ModServerConfig {
         if (event.getConfig().getSpec() == SERVER_SPEC) {
             sneakingPreventsBerryBushDamage = SNEAKING_PREVENTS_BERRY_BUSH_DAMAGE.get();
             legArmorPreventsBerryBushDamage = LEG_ARMOR_PREVENTS_BERRY_BUSH_DAMAGE.get();
+            lodestoneChangesBackport = LODESTONE_CHANGES_BACKPORT.get();
             elytraSwimTweak = ELYTRA_SWIM_TWEAK.get();
             soulSpeedNoDamage = SOUL_SPEED_NO_DAMAGE.get();
             thornsNoDamage = THORNS_NO_DAMAGE.get();

@@ -2,6 +2,7 @@
   "text.config.misctweaks.title": "MiscTweaks Config",
   "text.config.misctweaks.option.sneakingPreventsBerryBushDamage": "Sneaking prevents berry bush damage",
   "text.config.misctweaks.option.legArmorPreventsBerryBushDamage": "Leg armor prevents berry bush damage",
+  "text.config.misctweaks.option.lodestoneChangesBackport": "Lodestone changes backport",
   "text.config.misctweaks.option.elytraSwimTweak": "Elytra swim tweak",
   "text.config.misctweaks.option.soulSpeedNoDamage": "No soul speed boots damage",
   "text.config.misctweaks.option.creeperExplosionDropsAllItems": "Creeper explosion drops all items",

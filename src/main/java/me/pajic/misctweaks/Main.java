@@ -1,6 +1,7 @@
 package me.pajic.misctweaks;
 
 import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.mixson.ResourceModifications;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -21,5 +22,6 @@ public class Main {
 
     public Main(ModContainer modContainer) {
         modContainer.registerConfig(ModConfig.Type.SERVER, ModServerConfig.SERVER_SPEC);
+        ResourceModifications.init();
     }
 }

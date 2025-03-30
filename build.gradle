@@ -11,6 +11,7 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    maven { url = "https://jitpack.io" }
 }
 
 base {
@@ -55,8 +56,21 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+jarJar.enable()
+
+jar {
+    archiveClassifier = "slim"
+}
+
+tasks.named('jarJar') {
+    archiveClassifier = ""
+}
+
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+    implementation(jarJar("com.github.ramixin:mixson-neoforge:${project.mixson_version}")) {
+        jarJar.ranged(it, "[v1.3.1,)")
+    }
 }
 
 tasks.withType(ProcessResources).configureEach {
