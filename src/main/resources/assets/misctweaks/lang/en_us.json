@@ -11,5 +11,7 @@
   "text.config.misctweaks.option.preventShulkerDuplication": "Prevent shulker duplication",
   "text.config.misctweaks.option.flammableCobweb": "Flammable cobwebs",
   "text.config.misctweaks.option.thornsNoDamage": "No thorns chestplate damage",
-  "text.config.misctweaks.option.randomizeDiscLoot": "Randomize music disc loot"
+  "text.config.misctweaks.option.randomizeDiscLoot": "Randomize music disc loot",
+  "text.config.misctweaks.option.lowerShield": "Lower shield in offhand",
+  "text.config.misctweaks.option.shields": "Shield list"
 }

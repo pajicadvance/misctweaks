@@ -1,9 +1,7 @@
 package me.pajic.misctweaks.mixson;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import me.pajic.misctweaks.config.ModClientConfig;
 import me.pajic.misctweaks.config.ModServerConfig;
 import net.neoforged.fml.loading.FMLLoader;
 import net.ramixin.mixson.debug.DebugMode;
@@ -56,7 +54,7 @@ public class ResourceModifications {
                         else context.getFile().getAsJsonObject()
                                     .getAsJsonObject("key")
                                     .getAsJsonObject("#")
-                                    .addProperty("item", "minecraft:iron_ingot");
+                                    .addProperty("tag", "c:ingots/iron");
                     }
             );
             Mixson.registerEvent(
@@ -94,5 +92,31 @@ public class ResourceModifications {
                             .addProperty("parent", "minecraft:adventure/root")
             );
         }
+    }
+
+    public static void clientInit() {
+        if (ModClientConfig.lowerShield) ModClientConfig.shields.forEach(s -> {
+            String[] split = s.split(":");
+            if (split.length == 2) {
+                Mixson.registerEvent(
+                        Mixson.DEFAULT_PRIORITY,
+                        split[0] + ":models/item/" + split[1],
+                        "misctweaks:modify_" + split[0] + "_" + split[1] + "_model",
+                        context -> {
+                            if (
+                                    context.getFile().getAsJsonObject().has("display") &&
+                                    context.getFile().getAsJsonObject().getAsJsonObject("display")
+                                            .has("firstperson_lefthand")
+                            ) {
+                                context.getFile().getAsJsonObject()
+                                        .getAsJsonObject("display")
+                                        .getAsJsonObject("firstperson_lefthand")
+                                        .getAsJsonArray("translation")
+                                        .set(1, new JsonPrimitive(-4));
+                            }
+                        }
+                );
+            }
+        });
     }
 }
