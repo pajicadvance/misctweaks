@@ -92,4 +92,30 @@ public class ResourceModifications {
             );
         }
     }
+
+    public static void clientInit() {
+        if (Main.CONFIG.lowerShield()) Main.CONFIG.shields().forEach(s -> {
+            String[] split = s.split(":");
+            if (split.length == 2) {
+                Mixson.registerEvent(
+                        Mixson.DEFAULT_PRIORITY,
+                        split[0] + ":models/item/" + split[1],
+                        "misctweaks:modify_" + split[0] + "_" + split[1] + "_model",
+                        context -> {
+                            if (
+                                    context.getFile().getAsJsonObject().has("display") &&
+                                    context.getFile().getAsJsonObject().getAsJsonObject("display")
+                                            .has("firstperson_lefthand")
+                            ) {
+                                context.getFile().getAsJsonObject()
+                                        .getAsJsonObject("display")
+                                        .getAsJsonObject("firstperson_lefthand")
+                                        .getAsJsonArray("translation")
+                                        .set(1, new JsonPrimitive(-4));
+                            }
+                        }
+                );
+            }
+        });
+    }
 }

@@ -12,6 +12,9 @@
   "entrypoints": {
     "main": [
       "me.pajic.misctweaks.Main"
+    ],
+    "client": [
+      "me.pajic.misctweaks.ClientMain"
     ]
   },
   "mixins": [
