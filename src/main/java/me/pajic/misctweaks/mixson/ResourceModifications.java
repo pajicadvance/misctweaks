@@ -6,6 +6,8 @@ import me.pajic.misctweaks.config.ModServerConfig;
 import net.neoforged.fml.loading.FMLLoader;
 import net.ramixin.mixson.debug.DebugMode;
 import net.ramixin.mixson.inline.Mixson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ResourceModifications {
 
@@ -37,6 +39,8 @@ public class ResourceModifications {
         }
     """);
 
+    private static final Logger LOGGER = LoggerFactory.getLogger("MiscTweaks-ResourceModifications");
+
     public static void init() {
         if (!FMLLoader.isProduction()) Mixson.setDebugMode(DebugMode.EXPORT);
         if (ModServerConfig.lodestoneChangesBackport) {
@@ -48,13 +52,18 @@ public class ResourceModifications {
                         JsonElement value = context.getFile().getAsJsonObject()
                                 .getAsJsonObject("key")
                                 .get("#");
-                        if (value.isJsonPrimitive()) context.getFile().getAsJsonObject()
+                        if (value != null) {
+                            if (value.isJsonPrimitive()) context.getFile().getAsJsonObject()
                                     .getAsJsonObject("key")
                                     .addProperty("#", "minecraft:iron_ingot");
-                        else context.getFile().getAsJsonObject()
+                            else context.getFile().getAsJsonObject()
                                     .getAsJsonObject("key")
                                     .getAsJsonObject("#")
                                     .addProperty("tag", "c:ingots/iron");
+                        }
+                        else {
+                            LOGGER.error("MiscTweaks tried to modify the lodestone recipe, but it has been replaced by another mod or a datapack. Skipping patch.");
+                        }
                     }
             );
             Mixson.registerEvent(
