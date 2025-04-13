@@ -5,7 +5,7 @@ This is a lightweight mod that addresses some gameplay annoyances.
 Server-side:
 - Creeper explosions drop all destroyed items instead of only some of them
 - Berry bushes don't do any damage when sneaking or wearing leg armor
-- Backported lodestone changes from 1.21.5
+- [1.21.1+ only] Backported lodestone changes from 1.21.5
 - Cobwebs can be set on fire and burned
 - Flying into water with the Elytra makes the player start swimming instead of continuing to fly underwater
 - Thorns and Soul Speed don't cause durability damage to armor
@@ -14,7 +14,7 @@ Server-side:
 - (Disabled by default) Shulkers don't duplicate when hit by shulker bullets
 
 Client-side:
-- Shield is lowered (but still visible) when held in offhand. Modded shield items can be added to the config for mod compatibility
+- [1.21.1+ only] Shield is lowered (but still visible) when held in offhand. Modded shield items can be added to the config for mod compatibility
 
 Tweaks can be toggled on/off in the config.
 

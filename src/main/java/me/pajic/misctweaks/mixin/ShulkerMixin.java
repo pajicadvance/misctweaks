@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public class ShulkerMixin {
 
     @WrapWithCondition(
-            //? if 1.21.1
+            //? if <= 1.21.1
             method = "hurt",
             //? if 1.21.4
             /*method = "hurtServer",*/

@@ -36,7 +36,10 @@ public class LootItemMixin {
             method = "createItemStack",
             at = @At(
                     value = "NEW",
+                    //? if >= 1.21.1
                     target = "(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/item/ItemStack;"
+                    //? if < 1.21.1
+                    /*target = "(Lnet/minecraft/world/level/ItemLike;)Lnet/minecraft/world/item/ItemStack;"*/
             )
     )
     private ItemStack swapMusicDisc(ItemStack original, @Local(argsOnly = true) LootContext lootContext) {

@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.9-SNAPSHOT'
+    id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -10,6 +10,9 @@ base {
     archivesName = project.archives_base_name
 }
 
+loom {
+    accessWidenerPath = file("src/main/resources/misctweaks.accesswidener")
+}
 
 repositories {
     maven { url = "https://maven.parchmentmc.org" }
@@ -26,7 +29,9 @@ dependencies {
     }
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    include(modImplementation("com.github.ramixin:mixson-fabric:${property("mixson_version")}"))
+    if (stonecutter.eval(stonecutter.current.version, ">1.20.1")) {
+        include(modImplementation("com.github.ramixin:mixson-fabric:${property("mixson_version")}"))
+    }
     modImplementation "net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}"
     modImplementation("com.terraformersmc:modmenu:${property("modmenu_version")}")
     annotationProcessor modImplementation("io.wispforest:owo-lib:${property("owo_version")}")
@@ -45,7 +50,7 @@ processResources {
     }
 }
 
-def targetJavaVersion = 21
+def targetJavaVersion = stonecutter.eval(stonecutter.current.version, ">=1.20.5") ? 21 : 17
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {

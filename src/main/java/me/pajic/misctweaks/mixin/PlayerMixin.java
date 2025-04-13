@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-//? if 1.21.1
+//? if <= 1.21.1
 import net.minecraft.world.item.ElytraItem;
 //? if 1.21.4
 /*import net.minecraft.core.component.DataComponents;*/
@@ -31,8 +31,12 @@ public abstract class PlayerMixin extends LivingEntity {
     )
     private void cancelElytraFlyingInLiquid(CallbackInfo ci) {
         if (
-                Main.CONFIG.elytraSwimTweak() && isInLiquid() &&
-                //? if 1.21.1
+                Main.CONFIG.elytraSwimTweak() &&
+                //? if >= 1.21.1
+                isInLiquid() &&
+                //? if < 1.21.1
+                /*isInWaterOrBubble() || isInLava() &&*/
+                //? if <= 1.21.1
                 getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem
                 //? if 1.21.4
                 /*getItemBySlot(EquipmentSlot.CHEST).has(DataComponents.GLIDER)*/

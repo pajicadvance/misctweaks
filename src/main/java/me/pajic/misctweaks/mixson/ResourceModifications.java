@@ -1,13 +1,17 @@
 package me.pajic.misctweaks.mixson;
 
+//? if > 1.20.1 {
 import com.google.gson.*;
 import me.pajic.misctweaks.Main;
 import net.fabricmc.loader.api.FabricLoader;
 import net.ramixin.mixson.debug.DebugMode;
 import net.ramixin.mixson.inline.Mixson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+//?}
 
 public class ResourceModifications {
-
+    //? if > 1.20.1 {
     public static final JsonElement lodestonePool = JsonParser.parseString("""
         {
           "bonus_rolls": 0.0,
@@ -36,6 +40,8 @@ public class ResourceModifications {
         }
     """);
 
+    private static final Logger LOGGER = LoggerFactory.getLogger("MiscTweaks-ResourceModifications");
+
     public static void init() {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) Mixson.setDebugMode(DebugMode.EXPORT);
         if (Main.CONFIG.lodestoneChangesBackport()) {
@@ -47,13 +53,18 @@ public class ResourceModifications {
                         JsonElement value = context.getFile().getAsJsonObject()
                                 .getAsJsonObject("key")
                                 .get("#");
-                        if (value.isJsonPrimitive()) context.getFile().getAsJsonObject()
+                        if (value != null) {
+                            if (value.isJsonPrimitive()) context.getFile().getAsJsonObject()
                                     .getAsJsonObject("key")
                                     .addProperty("#", "minecraft:iron_ingot");
-                        else context.getFile().getAsJsonObject()
+                            else context.getFile().getAsJsonObject()
                                     .getAsJsonObject("key")
                                     .getAsJsonObject("#")
                                     .addProperty("item", "minecraft:iron_ingot");
+                        }
+                        else {
+                            LOGGER.error("MiscTweaks tried to modify the lodestone recipe, but it has been replaced by another mod or a datapack. Skipping patch.");
+                        }
                     }
             );
             Mixson.registerEvent(
@@ -118,4 +129,5 @@ public class ResourceModifications {
             }
         });
     }
+    //?}
 }
