@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.pajic.misctweaks.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "misctweaks.refmap.json",
+  "mixins": [
+    "CreeperMixin",
+    "DiggerItemMixin",
+    "FireBlockMixin",
+    "LivingEntityMixin",
+    "LootItemMixin",
+    "PlayerMixin",
+    "ShulkerMixin",
+    "SweetBerryBushBlockMixin",
+    "ThornsEnchantmentMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
