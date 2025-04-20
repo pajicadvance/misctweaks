@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 //? if 1.21.1
 import net.minecraft.world.item.enchantment.effects.DamageItem;
-//? if 1.21.4
+//? if >= 1.21.4
 /*import net.minecraft.world.item.enchantment.effects.ChangeItemDamage;*/
 
 @Mixin(Enchantment.class)
@@ -32,11 +32,11 @@ public class EnchantmentMixin {
         if (
                 //? if 1.21.1
                 instance instanceof DamageItem
-                //? if 1.21.4
+                //? if >= 1.21.4
                 /*instance instanceof ChangeItemDamage*/
         ) {
             ResourceLocation enchantment = serverLevel.registryAccess()
-                    ./*? if 1.21.1 {*/registryOrThrow/*?}*//*? if 1.21.4 {*//*lookupOrThrow*//*?}*/
+                    ./*? if 1.21.1 {*/registryOrThrow/*?}*//*? if >= 1.21.4 {*//*lookupOrThrow*//*?}*/
                     (Registries.ENCHANTMENT).getKey((Enchantment) (Object) this);
             return (!ModServerConfig.soulSpeedNoDamage || Enchantments.SOUL_SPEED.location() != enchantment) &&
                     (!ModServerConfig.thornsNoDamage || Enchantments.THORNS.location() != enchantment);

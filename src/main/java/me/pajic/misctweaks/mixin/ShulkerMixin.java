@@ -12,7 +12,7 @@ public class ShulkerMixin {
     @WrapWithCondition(
             //? if 1.21.1
             method = "hurt",
-            //? if 1.21.4
+            //? if >= 1.21.4
             /*method = "hurtServer",*/
             at = @At(
                     value = "INVOKE",
