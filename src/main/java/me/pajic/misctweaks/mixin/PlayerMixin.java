@@ -13,12 +13,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //? if <= 1.21.1
 import net.minecraft.world.item.ElytraItem;
-//? if 1.21.4
+//? if >= 1.21.4
 /*import net.minecraft.core.component.DataComponents;*/
 
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
 
+    //? if < 1.21.5
     @Shadow public abstract void stopFallFlying();
 
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level level) {
@@ -38,7 +39,7 @@ public abstract class PlayerMixin extends LivingEntity {
                 /*isInWaterOrBubble() || isInLava() &&*/
                 //? if <= 1.21.1
                 getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem
-                //? if 1.21.4
+                //? if >= 1.21.4
                 /*getItemBySlot(EquipmentSlot.CHEST).has(DataComponents.GLIDER)*/
         ) {
             stopFallFlying();

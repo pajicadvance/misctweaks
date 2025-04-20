@@ -12,6 +12,7 @@ import java.util.List;
 public class ConfigModel {
     public boolean sneakingPreventsBerryBushDamage = true;
     public boolean legArmorPreventsBerryBushDamage = true;
+    //? if < 1.21.5
     @RestartRequired public boolean lodestoneChangesBackport = true;
     public boolean elytraSwimTweak = true;
     public boolean soulSpeedNoDamage = true;
@@ -23,6 +24,8 @@ public class ConfigModel {
     public boolean randomizeDiscLoot = true;
     public boolean preventShulkerDuplication = false;
 
+    //? if > 1.20.1 {
     @RestartRequired @Sync(Option.SyncMode.NONE) public boolean lowerShield = true;
     @RestartRequired @Sync(Option.SyncMode.NONE) public List<String> shields = List.of("minecraft:shield");
+    //?}
 }

@@ -44,6 +44,7 @@ public class ResourceModifications {
 
     public static void init() {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) Mixson.setDebugMode(DebugMode.EXPORT);
+        //? if < 1.21.5 {
         if (Main.CONFIG.lodestoneChangesBackport()) {
             Mixson.registerEvent(
                     Mixson.DEFAULT_PRIORITY,
@@ -102,6 +103,7 @@ public class ResourceModifications {
                             .addProperty("parent", "minecraft:adventure/root")
             );
         }
+        //?}
     }
 
     public static void clientInit() {

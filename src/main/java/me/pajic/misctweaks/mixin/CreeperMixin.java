@@ -16,7 +16,7 @@ public class CreeperMixin {
                     value = "INVOKE",
                     //? if <= 1.21.1
                     target = "Lnet/minecraft/world/level/Level;explode(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)Lnet/minecraft/world/level/Explosion;"
-                    //? if 1.21.4
+                    //? if >= 1.21.4
                     /*target = "Lnet/minecraft/server/level/ServerLevel;explode(Lnet/minecraft/world/entity/Entity;DDDFLnet/minecraft/world/level/Level$ExplosionInteraction;)V"*/
             ),
             index = 5
