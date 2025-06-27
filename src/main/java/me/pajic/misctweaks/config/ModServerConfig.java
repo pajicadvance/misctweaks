@@ -20,6 +20,11 @@ public class ModServerConfig {
             .translation("text.config.misctweaks.option.lodestoneChangesBackport")
             .define("lodestoneChangesBackport", true);
     //?}
+    //? if < 1.21.6 {
+    private static final ModConfigSpec.BooleanValue CRAFTABLE_SADDLE_BACKPORT = BUILDER
+            .translation("text.config.misctweaks.option.craftableSaddleBackport")
+            .define("craftableSaddleBackport", true);
+    //?}
     private static final ModConfigSpec.BooleanValue ELYTRA_SWIM_TWEAK = BUILDER
             .translation("text.config.misctweaks.option.elytraSwimTweak")
             .define("elytraSwimTweak", true);
@@ -54,6 +59,8 @@ public class ModServerConfig {
     public static boolean legArmorPreventsBerryBushDamage = true;
     //? if < 1.21.5
     public static boolean lodestoneChangesBackport = true;
+    //? if < 1.21.6
+    public static boolean craftableSaddleBackport = true;
     public static boolean elytraSwimTweak = true;
     public static boolean soulSpeedNoDamage = true;
     public static boolean thornsNoDamage = true;
@@ -80,6 +87,8 @@ public class ModServerConfig {
             legArmorPreventsBerryBushDamage = LEG_ARMOR_PREVENTS_BERRY_BUSH_DAMAGE.get();
             //? if < 1.21.5
             lodestoneChangesBackport = LODESTONE_CHANGES_BACKPORT.get();
+            //? if < 1.21.6
+            craftableSaddleBackport = CRAFTABLE_SADDLE_BACKPORT.get();
             elytraSwimTweak = ELYTRA_SWIM_TWEAK.get();
             soulSpeedNoDamage = SOUL_SPEED_NO_DAMAGE.get();
             thornsNoDamage = THORNS_NO_DAMAGE.get();

@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,9 +40,14 @@ public class LootItemMixin {
                     target = "(Lnet/minecraft/core/Holder;)Lnet/minecraft/world/item/ItemStack;"
             )
     )
-    private ItemStack swapMusicDisc(ItemStack original, @Local(argsOnly = true) LootContext lootContext) {
+    private ItemStack swapLootItem(ItemStack original, @Local(argsOnly = true) LootContext lootContext) {
         if (ModServerConfig.randomizeDiscLoot && (original.is(Items.MUSIC_DISC_13) || original.is(Items.MUSIC_DISC_CAT))) {
             return new ItemStack(discs.get(lootContext.getRandom().nextInt(discs.size())));
+        }
+        if (ModServerConfig.craftableSaddleBackport && original.is(Items.SADDLE)) {
+            ItemStack leather = new ItemStack(Items.LEATHER);
+            leather.setCount(UniformGenerator.between(1.0F, 5.0F).getInt(lootContext));
+            return leather;
         }
         return original;
     }

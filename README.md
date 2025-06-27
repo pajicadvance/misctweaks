@@ -6,6 +6,7 @@ Server-side:
 - Creeper explosions drop all destroyed items instead of only some of them
 - Berry bushes don't do any damage when sneaking or wearing leg armor
 - Backported lodestone changes from 1.21.5
+- Backported saddle recipe and loot changes from 1.21.6
 - Cobwebs can be set on fire and burned
 - Flying into water with the Elytra makes the player start swimming instead of continuing to fly underwater
 - Thorns and Soul Speed don't cause durability damage to armor
@@ -18,6 +19,4 @@ Client-side:
 
 Tweaks can be toggled on/off in the config.
 
-Fabric version requires [owo-lib](https://www.curseforge.com/minecraft/mc-mods/owo-lib). Access the in-game config via [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu).
-
-NeoForge version has no requirements. Access the in-game config via the built-in mod menu.
+All versions require [Fzzy Config](https://modrinth.com/mod/fzzy-config). On Fabric, access the in-game config via [Mod Menu](https://modrinth.com/mod/modmenu). On (Neo)Forge, access the in-game config via the built-in mod menu.
