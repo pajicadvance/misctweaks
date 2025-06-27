@@ -14,6 +14,8 @@ public class ConfigModel {
     public boolean legArmorPreventsBerryBushDamage = true;
     //? if < 1.21.5
     @RestartRequired public boolean lodestoneChangesBackport = true;
+    //? if < 1.21.6
+    @RestartRequired public boolean craftableSaddleBackport = true;
     public boolean elytraSwimTweak = true;
     public boolean soulSpeedNoDamage = true;
     public boolean thornsNoDamage = true;

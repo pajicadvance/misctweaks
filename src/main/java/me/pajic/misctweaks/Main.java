@@ -1,6 +1,7 @@
 package me.pajic.misctweaks;
 
 import me.pajic.misctweaks.config.ModConfig;
+import me.pajic.misctweaks.datapack.CraftableSaddleDatapack;
 import me.pajic.misctweaks.datapack.LodestoneBackportDatapack;
 import me.pajic.misctweaks.mixson.ResourceModifications;
 import net.fabricmc.api.ModInitializer;
@@ -33,5 +34,7 @@ public class Main implements ModInitializer {
         ResourceModifications.init();
         //? if = 1.20.1
         /*LodestoneBackportDatapack.init();*/
+        //? if < 1.21.6
+        CraftableSaddleDatapack.init();
     }
 }
