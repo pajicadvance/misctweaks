@@ -1,7 +1,7 @@
 package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -38,8 +38,8 @@ public class EnchantmentMixin {
             ResourceLocation enchantment = serverLevel.registryAccess()
                     ./*? if 1.21.1 {*/registryOrThrow/*?}*//*? if >= 1.21.4 {*//*lookupOrThrow*//*?}*/
                     (Registries.ENCHANTMENT).getKey((Enchantment) (Object) this);
-            return (!ModServerConfig.soulSpeedNoDamage || Enchantments.SOUL_SPEED.location() != enchantment) &&
-                    (!ModServerConfig.thornsNoDamage || Enchantments.THORNS.location() != enchantment);
+            return (!Main.CONFIG.soulSpeedNoDamage.get() || Enchantments.SOUL_SPEED.location() != enchantment) &&
+                    (!Main.CONFIG.thornsNoDamage.get() || Enchantments.THORNS.location() != enchantment);
         }
         return true;
     }

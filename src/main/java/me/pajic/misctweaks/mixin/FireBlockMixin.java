@@ -1,7 +1,7 @@
 package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,6 +17,6 @@ public class FireBlockMixin {
             at = @At("TAIL")
     )
     private static void setCobwebFlammable(CallbackInfo ci, @Local FireBlock fireBlock) {
-        if (ModServerConfig.flammableCobweb) fireBlock.setFlammable(Blocks.COBWEB, 500, 60);
+        if (Main.CONFIG.flammableCobweb.get()) fireBlock.setFlammable(Blocks.COBWEB, 500, 60);
     }
 }

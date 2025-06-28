@@ -1,6 +1,6 @@
 package me.pajic.misctweaks.mixin;
 
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +22,6 @@ public class CreeperMixin {
             index = 5
     )
     private Level.ExplosionInteraction creeperExplosionDropsAll(Level.ExplosionInteraction original) {
-        return ModServerConfig.creeperExplosionDropsAllItems ? Level.ExplosionInteraction.TNT : original;
+        return Main.CONFIG.creeperExplosionDropsAllItems.get() ? Level.ExplosionInteraction.TNT : original;
     }
 }

@@ -1,6 +1,6 @@
 package me.pajic.misctweaks.mixin;
 
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -32,7 +32,7 @@ public abstract class PlayerMixin extends LivingEntity {
     )
     private void cancelElytraFlyingInLiquid(CallbackInfo ci) {
         if (
-                ModServerConfig.elytraSwimTweak && isInLiquid() &&
+                Main.CONFIG.elytraSwimTweak.get() && isInLiquid() &&
                 //? if 1.21.1
                 getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem
                 //? if >= 1.21.4

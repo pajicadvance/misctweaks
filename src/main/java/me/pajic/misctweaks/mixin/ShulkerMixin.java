@@ -1,7 +1,7 @@
 package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.world.entity.monster.Shulker;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,6 +20,6 @@ public class ShulkerMixin {
             )
     )
     private boolean preventDuplication(Shulker instance) {
-        return !ModServerConfig.preventShulkerDuplication;
+        return !Main.CONFIG.preventShulkerDuplication.get();
     }
 }

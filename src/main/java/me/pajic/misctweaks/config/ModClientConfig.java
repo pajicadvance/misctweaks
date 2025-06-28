@@ -1,45 +1,29 @@
 package me.pajic.misctweaks.config;
 
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.event.config.ModConfigEvent;
-import net.neoforged.neoforge.common.ModConfigSpec;
+import me.fzzyhmstrs.fzzy_config.annotations.Action;
+import me.fzzyhmstrs.fzzy_config.annotations.ClientModifiable;
+import me.fzzyhmstrs.fzzy_config.annotations.RequiresAction;
+import me.fzzyhmstrs.fzzy_config.annotations.Version;
+import me.fzzyhmstrs.fzzy_config.config.Config;
+import me.fzzyhmstrs.fzzy_config.validation.collection.ValidatedList;
+import me.fzzyhmstrs.fzzy_config.validation.minecraft.ValidatedIdentifier;
+import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedBoolean;
+import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;
+import me.pajic.misctweaks.ClientMain;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@EventBusSubscriber(modid = "misctweaks", bus = EventBusSubscriber.Bus.MOD)
-public class ModClientConfig {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
-
-    private static final ModConfigSpec.BooleanValue LOWER_SHIELD = BUILDER
-            .translation("text.config.misctweaks.option.lowerShield")
-            .gameRestart()
-            .define("lowerShield", true);
-    private static final ModConfigSpec.ConfigValue<List<? extends String>> SHIELDS = BUILDER
-            .translation("text.config.misctweaks.option.shields")
-            .gameRestart()
-            .defineListAllowEmpty("shields", List.of("minecraft:shield"), () -> "", o -> true);
-
-    public static final ModConfigSpec CLIENT_SPEC = BUILDER.build();
-
-    public static boolean lowerShield;
-    public static List<String> shields;
-
-    @SubscribeEvent
-    static void onLoad(final ModConfigEvent.Loading event) {
-        updateConfig(event);
+@ClientModifiable
+@Version(version = 1)
+public class ModClientConfig extends Config {
+    public ModClientConfig() {
+        super(ClientMain.CLIENT_CONFIG_RL);
     }
 
-    @SubscribeEvent
-    static void onChange(final ModConfigEvent.Reloading event) {
-        updateConfig(event);
-    }
-
-    private static void updateConfig(ModConfigEvent event) {
-        if (event.getConfig().getSpec() == CLIENT_SPEC) {
-            lowerShield = LOWER_SHIELD.get();
-            shields = new ArrayList<>(SHIELDS.get());
-        }
-    }
+    @RequiresAction(action = Action.RESTART)
+    public ValidatedBoolean lowerShield = new ValidatedBoolean(true);
+    @RequiresAction(action = Action.RESTART)
+    public ValidatedList<ResourceLocation> shields = ValidatedIdentifier.ofRegistry(ResourceLocation.withDefaultNamespace("shield"), BuiltInRegistries.ITEM).toList(ResourceLocation.withDefaultNamespace("shield"));
+    @RequiresAction(action = Action.RESTART)
+    public ValidatedFloat offset = new ValidatedFloat(-4.0F, 0F, -5.0F);
 }

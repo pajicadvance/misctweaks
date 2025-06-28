@@ -2,7 +2,7 @@ package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -41,10 +41,10 @@ public class LootItemMixin {
             )
     )
     private ItemStack swapLootItem(ItemStack original, @Local(argsOnly = true) LootContext lootContext) {
-        if (ModServerConfig.randomizeDiscLoot && (original.is(Items.MUSIC_DISC_13) || original.is(Items.MUSIC_DISC_CAT))) {
+        if (Main.CONFIG.randomizeDiscLoot.get() && (original.is(Items.MUSIC_DISC_13) || original.is(Items.MUSIC_DISC_CAT))) {
             return new ItemStack(discs.get(lootContext.getRandom().nextInt(discs.size())));
         }
-        if (ModServerConfig.craftableSaddleBackport && original.is(Items.SADDLE)) {
+        if (Main.CONFIG.craftableSaddleBackport.get() && original.is(Items.SADDLE)) {
             ItemStack leather = new ItemStack(Items.LEATHER);
             leather.setCount(UniformGenerator.between(1.0F, 5.0F).getInt(lootContext));
             return leather;

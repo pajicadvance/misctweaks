@@ -1,6 +1,6 @@
 package me.pajic.misctweaks.datapack;
 
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -13,7 +13,7 @@ public class CraftableSaddleDatapack {
     @SubscribeEvent
     public static void registerDatapack(AddPackFindersEvent event) {
         //? if < 1.21.6 {
-        if (ModServerConfig.craftableSaddleBackport) event.addPackFinders(
+        if (Main.CONFIG.craftableSaddleBackport.get()) event.addPackFinders(
                 ResourceLocation.fromNamespaceAndPath(
                         "misctweaks",
                         //? if 1.21.1

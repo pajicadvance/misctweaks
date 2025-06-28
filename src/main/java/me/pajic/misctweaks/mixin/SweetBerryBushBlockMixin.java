@@ -2,7 +2,7 @@ package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import me.pajic.misctweaks.config.ModServerConfig;
+import me.pajic.misctweaks.Main;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -33,8 +33,8 @@ public class SweetBerryBushBlockMixin {
     /*private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance, ServerLevel serverLevel, DamageSource source, float amount, Operation<Boolean> original) {*/
         if (instance instanceof Player p) {
             if (
-                    (ModServerConfig.sneakingPreventsBerryBushDamage && p.isShiftKeyDown()) ||
-                    (ModServerConfig.legArmorPreventsBerryBushDamage && p.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR))
+                    (Main.CONFIG.sneakingPreventsBerryBushDamage.get() && p.isShiftKeyDown()) ||
+                    (Main.CONFIG.legArmorPreventsBerryBushDamage.get() && p.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR))
             ) {
                 return false;
             }

@@ -13,6 +13,8 @@ group = mod_group_id
 repositories {
     mavenLocal()
     maven { url = "https://jitpack.io" }
+    maven { url = "https://maven.fzzyhmstrs.me/" }
+    maven { url = "https://thedarkcolour.github.io/KotlinForForge/" }
 }
 
 base {
@@ -72,6 +74,7 @@ dependencies {
     implementation(jarJar("com.github.ramixin:mixson-neoforge:${project.mixson_version}")) {
         jarJar.ranged(it, "[v1.3.1,)")
     }
+    implementation "me.fzzyhmstrs:fzzy_config:${property("fzzy_version")}"
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -134,5 +137,5 @@ publishMods {
         optional("modmenu")
     }
 
-    dryRun = true
+    //dryRun = true
 }

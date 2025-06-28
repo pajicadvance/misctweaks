@@ -1,22 +1,21 @@
 package me.pajic.misctweaks;
 
+import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
+import me.fzzyhmstrs.fzzy_config.api.RegisterType;
 import me.pajic.misctweaks.config.ModClientConfig;
 import me.pajic.misctweaks.mixson.ResourceModifications;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.client.gui.ConfigurationScreen;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(value = "misctweaks", dist = Dist.CLIENT)
 public class ClientMain {
+    public static final ResourceLocation CLIENT_CONFIG_RL = ResourceLocation.fromNamespaceAndPath(Main.MOD_ID, "client_config");
+    public static ModClientConfig CLIENT_CONFIG = ConfigApiJava.registerAndLoadConfig(ModClientConfig::new, RegisterType.CLIENT);
 
-    public ClientMain(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.CLIENT, ModClientConfig.CLIENT_SPEC);
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+    public ClientMain(IEventBus modEventBus) {
         modEventBus.addListener(this::onInitialize);
     }
 
