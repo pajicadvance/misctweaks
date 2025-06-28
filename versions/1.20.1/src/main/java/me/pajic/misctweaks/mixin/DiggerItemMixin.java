@@ -16,8 +16,8 @@ public class DiggerItemMixin {
             at = @At("RETURN")
     )
     private float modifyDestroySpeed(float original, @Local(argsOnly = true) BlockState state) {
-        if (Main.CONFIG.fasterObsidianMining() && state.is(Main.OBSIDIAN_LIKE)) {
-            return original * Main.CONFIG.obsidianMiningSpeedMultiplier();
+        if (Main.CONFIG.fasterObsidianMining.get() && state.is(Main.OBSIDIAN_LIKE)) {
+            return original * Main.CONFIG.obsidianMiningSpeedMultiplier.get();
         }
         return original;
     }

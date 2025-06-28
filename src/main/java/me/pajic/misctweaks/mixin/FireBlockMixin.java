@@ -17,6 +17,6 @@ public class FireBlockMixin {
             at = @At("TAIL")
     )
     private static void setCobwebFlammable(CallbackInfo ci, @Local FireBlock fireBlock) {
-        if (Main.CONFIG.flammableCobweb()) fireBlock.setFlammable(Blocks.COBWEB, 500, 60);
+        if (Main.CONFIG.flammableCobweb.get()) fireBlock.setFlammable(Blocks.COBWEB, 500, 60);
     }
 }

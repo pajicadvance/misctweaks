@@ -1,9 +1,11 @@
 package me.pajic.misctweaks;
 
+import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.pajic.misctweaks.config.ModConfig;
 import me.pajic.misctweaks.datapack.CraftableSaddleDatapack;
 import me.pajic.misctweaks.datapack.LodestoneBackportDatapack;
 import me.pajic.misctweaks.mixson.ResourceModifications;
+import me.pajic.misctweaks.util.MultiVersionUtil;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -12,8 +14,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class Main implements ModInitializer {
+    public static final String MOD_ID = "misctweaks";
+    public static final ResourceLocation CONFIG_RL = MultiVersionUtil.fromNamespaceAndPath("config");
+    public static ModConfig CONFIG = ConfigApiJava.registerAndLoadConfig(ModConfig::new);
 
-    public static final ModConfig CONFIG = ModConfig.createAndLoad();
     //? if < 1.21.1 {
     /*public static final TagKey<Item> LEG_ARMOR = TagKey.create(
             Registries.ITEM,
@@ -22,10 +26,7 @@ public class Main implements ModInitializer {
     *///?}
     public static final TagKey<Block> OBSIDIAN_LIKE = TagKey.create(
             Registries.BLOCK,
-            //? if >= 1.21.1
-            ResourceLocation.fromNamespaceAndPath("misctweaks", "obsidian_like")
-            //? if < 1.21.1
-            /*new ResourceLocation("misctweaks", "obsidian_like")*/
+            MultiVersionUtil.fromNamespaceAndPath("obsidian_like")
     );
 
     @Override

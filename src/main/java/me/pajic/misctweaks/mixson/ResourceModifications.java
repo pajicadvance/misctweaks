@@ -2,6 +2,7 @@ package me.pajic.misctweaks.mixson;
 
 //? if > 1.20.1 {
 import com.google.gson.*;
+import me.pajic.misctweaks.ClientMain;
 import me.pajic.misctweaks.Main;
 import net.fabricmc.loader.api.FabricLoader;
 import net.ramixin.mixson.debug.DebugMode;
@@ -45,7 +46,7 @@ public class ResourceModifications {
     public static void init() {
         if (FabricLoader.getInstance().isDevelopmentEnvironment()) Mixson.setDebugMode(DebugMode.EXPORT);
         //? if < 1.21.5 {
-        if (Main.CONFIG.lodestoneChangesBackport()) {
+        if (Main.CONFIG.lodestoneChangesBackport.get()) {
             Mixson.registerEvent(
                     Mixson.DEFAULT_PRIORITY,
                     "minecraft:recipe/lodestone",
@@ -107,28 +108,27 @@ public class ResourceModifications {
     }
 
     public static void clientInit() {
-        if (Main.CONFIG.lowerShield()) Main.CONFIG.shields().forEach(s -> {
-            String[] split = s.split(":");
-            if (split.length == 2) {
-                Mixson.registerEvent(
-                        Mixson.DEFAULT_PRIORITY,
-                        split[0] + ":models/item/" + split[1],
-                        "misctweaks:modify_" + split[0] + "_" + split[1] + "_model",
-                        context -> {
-                            if (
-                                    context.getFile().getAsJsonObject().has("display") &&
-                                    context.getFile().getAsJsonObject().getAsJsonObject("display")
-                                            .has("firstperson_lefthand")
-                            ) {
-                                context.getFile().getAsJsonObject()
-                                        .getAsJsonObject("display")
-                                        .getAsJsonObject("firstperson_lefthand")
-                                        .getAsJsonArray("translation")
-                                        .set(1, new JsonPrimitive(-4));
-                            }
+        if (ClientMain.CLIENT_CONFIG.lowerShield.get()) ClientMain.CLIENT_CONFIG.shields.forEach(rl -> {
+            String namespace = rl.getNamespace();
+            String path = rl.getPath();
+            Mixson.registerEvent(
+                    Mixson.DEFAULT_PRIORITY,
+                    namespace + ":models/item/" + path,
+                    "misctweaks:modify_" + namespace + "_" + path + "_model",
+                    context -> {
+                        if (
+                                context.getFile().getAsJsonObject().has("display") &&
+                                context.getFile().getAsJsonObject().getAsJsonObject("display")
+                                        .has("firstperson_lefthand")
+                        ) {
+                            context.getFile().getAsJsonObject()
+                                    .getAsJsonObject("display")
+                                    .getAsJsonObject("firstperson_lefthand")
+                                    .getAsJsonArray("translation")
+                                    .set(1, new JsonPrimitive(ClientMain.CLIENT_CONFIG.offset.get()));
                         }
-                );
-            }
+                    }
+            );
         });
     }
     //?}

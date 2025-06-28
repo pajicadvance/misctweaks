@@ -22,6 +22,6 @@ public class CreeperMixin {
             index = 5
     )
     private Level.ExplosionInteraction creeperExplosionDropsAll(Level.ExplosionInteraction original) {
-        return Main.CONFIG.creeperExplosionDropsAllItems() ? Level.ExplosionInteraction.TNT : original;
+        return Main.CONFIG.creeperExplosionDropsAllItems.get() ? Level.ExplosionInteraction.TNT : original;
     }
 }

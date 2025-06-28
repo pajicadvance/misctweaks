@@ -20,6 +20,6 @@ public class ShulkerMixin {
             )
     )
     private boolean preventDuplication(Shulker instance) {
-        return !Main.CONFIG.preventShulkerDuplication();
+        return !Main.CONFIG.preventShulkerDuplication.get();
     }
 }

@@ -21,6 +21,6 @@ public class ThornsEnchantmentMixin {
             )
     )
     private boolean preventEquipmentDamage(ItemStack instance, int i, LivingEntity livingEntity, Consumer consumer) {
-        return !Main.CONFIG.thornsNoDamage();
+        return !Main.CONFIG.thornsNoDamage.get();
     }
 }

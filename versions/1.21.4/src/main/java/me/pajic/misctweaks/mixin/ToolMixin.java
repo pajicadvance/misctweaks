@@ -19,7 +19,7 @@ public class ToolMixin {
             )
     )
     private <T> Object modifyMiningSpeed(T original, @Local(argsOnly = true) BlockState state) {
-        return Main.CONFIG.fasterObsidianMining() && state.is(Main.OBSIDIAN_LIKE) ?
-                Main.CONFIG.obsidianMiningSpeedMultiplier() * (float) original : original;
+        return Main.CONFIG.fasterObsidianMining.get() && state.is(Main.OBSIDIAN_LIKE) ?
+                Main.CONFIG.obsidianMiningSpeedMultiplier.get() * (float) original : original;
     }
 }

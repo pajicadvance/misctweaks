@@ -20,6 +20,6 @@ public class LivingEntityMixin {
             )
     )
     private boolean preventEquipmentDamage(ItemStack instance, int i, LivingEntity livingEntity, Consumer consumer) {
-        return !Main.CONFIG.soulSpeedNoDamage();
+        return !Main.CONFIG.soulSpeedNoDamage.get();
     }
 }

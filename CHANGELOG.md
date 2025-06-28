@@ -1,2 +1,3 @@
 - Added a backport of saddle changes introduced in 1.21.6. There is now a saddle recipe and saddles in loot tables have been replaced with 1-5 leather.
+- Shield height is now configurable.
 - Switched config API to Fzzy Config.

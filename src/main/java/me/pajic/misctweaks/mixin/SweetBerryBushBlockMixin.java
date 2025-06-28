@@ -34,8 +34,8 @@ public class SweetBerryBushBlockMixin {
     /*private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance, ServerLevel serverLevel, DamageSource source, float amount, Operation<Boolean> original) {*/
         if (instance instanceof Player p) {
             if (
-                    (Main.CONFIG.sneakingPreventsBerryBushDamage() && p.isShiftKeyDown()) ||
-                    (Main.CONFIG.legArmorPreventsBerryBushDamage() && p.getItemBySlot(EquipmentSlot.LEGS).is(
+                    (Main.CONFIG.sneakingPreventsBerryBushDamage.get() && p.isShiftKeyDown()) ||
+                    (Main.CONFIG.legArmorPreventsBerryBushDamage.get() && p.getItemBySlot(EquipmentSlot.LEGS).is(
                             //? if >= 1.21.1
                             ItemTags.LEG_ARMOR
                             //? if < 1.21.1

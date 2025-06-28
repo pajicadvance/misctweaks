@@ -28,8 +28,8 @@ public class EnchantmentMixin {
     private boolean preventEquipmentDamage(EnchantmentLocationBasedEffect instance, ServerLevel serverLevel, int i, EnchantedItemInUse enchantedItemInUse, Entity entity, Vec3 vec3, boolean b) {
         if (instance instanceof DamageItem) {
             ResourceLocation enchantment = serverLevel.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getKey((Enchantment) (Object) this);
-            return (!Main.CONFIG.soulSpeedNoDamage() || Enchantments.SOUL_SPEED.location() != enchantment) &&
-                    (!Main.CONFIG.thornsNoDamage() || Enchantments.THORNS.location() != enchantment);
+            return (!Main.CONFIG.soulSpeedNoDamage.get() || Enchantments.SOUL_SPEED.location() != enchantment) &&
+                    (!Main.CONFIG.thornsNoDamage.get() || Enchantments.THORNS.location() != enchantment);
         }
         return true;
     }

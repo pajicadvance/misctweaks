@@ -17,7 +17,7 @@ loom {
 repositories {
     maven { url = "https://maven.parchmentmc.org" }
     maven { url = "https://maven.terraformersmc.com/" }
-    maven { url = "https://maven.wispforest.io/releases/" }
+    maven { url = "https://maven.fzzyhmstrs.me/"}
     maven { url = "https://jitpack.io" }
 }
 
@@ -33,8 +33,8 @@ dependencies {
         include(modImplementation("com.github.ramixin:mixson-fabric:${property("mixson_version")}"))
     }
     modImplementation "net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}"
-    modImplementation("com.terraformersmc:modmenu:${property("modmenu_version")}")
-    annotationProcessor modImplementation("io.wispforest:owo-lib:${property("owo_version")}")
+    modImplementation "com.terraformersmc:modmenu:${property("modmenu_version")}"
+    modImplementation "me.fzzyhmstrs:fzzy_config:${property("fzzy_version")}"
 }
 
 processResources {
@@ -104,5 +104,5 @@ publishMods {
         optional("modmenu")
     }
 
-    dryRun = true
+    //dryRun = true
 }
