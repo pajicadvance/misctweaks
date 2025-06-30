@@ -120,9 +120,6 @@ publishMods {
         accessToken = providers.environmentVariable("MR_KEY")
         projectId = "9sMkzzYU"
         minecraftVersions.add(stonecutter.current.version)
-        requires("fabric-api", "fzzy-config")
-        optional("modmenu")
-        embeds("mixson")
     }
 
     curseforge {
@@ -133,8 +130,6 @@ publishMods {
                 ? JavaVersion.VERSION_21 : JavaVersion.VERSION_17)
         clientRequired = true
         serverRequired = true
-        requires("fabric-api", "fzzy-config")
-        optional("modmenu")
     }
 
     //dryRun = true
