@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ClientMain implements ClientModInitializer {
     public static final ResourceLocation CLIENT_CONFIG_RL = MultiVersionUtil.fromNamespaceAndPath("client_config");
+    //? if > 1.20.1
     public static ModClientConfig CLIENT_CONFIG = ConfigApiJava.registerAndLoadConfig(ModClientConfig::new, RegisterType.CLIENT);
 
     @Override
