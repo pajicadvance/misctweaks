@@ -11,9 +11,9 @@ public class ShulkerMixin {
 
     @WrapWithCondition(
             //? if 1.21.1
-            method = "hurt",
+            /*method = "hurt",*/
             //? if >= 1.21.4
-            /*method = "hurtServer",*/
+            method = "hurtServer",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/entity/monster/Shulker;hitByShulkerBullet()V"

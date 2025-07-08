@@ -14,10 +14,14 @@ public class ModCommonConfig extends Config {
         super(Main.CONFIG_RL);
     }
 
-    @RequiresAction(action = Action.RESTART)
+    //? if < 1.21.5 {
+    /*@RequiresAction(action = Action.RESTART)
     public ValidatedBoolean lodestoneChangesBackport = new ValidatedBoolean(true);
-    @RequiresAction(action = Action.RESTART)
+    *///?}
+    //? if < 1.21.6 {
+    /*@RequiresAction(action = Action.RESTART)
     public ValidatedBoolean craftableSaddleBackport =  new ValidatedBoolean(true);
+    *///?}
     public ValidatedBoolean sneakingPreventsBerryBushDamage = new ValidatedBoolean(true);
     public ValidatedBoolean legArmorPreventsBerryBushDamage = new ValidatedBoolean(true);
     public ValidatedBoolean elytraSwimTweak = new ValidatedBoolean(true);

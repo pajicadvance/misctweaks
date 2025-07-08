@@ -13,13 +13,13 @@ public class CraftableSaddleDatapack {
     @SubscribeEvent
     public static void registerDatapack(AddPackFindersEvent event) {
         //? if < 1.21.6 {
-        if (Main.CONFIG.craftableSaddleBackport.get()) event.addPackFinders(
+        /*if (Main.CONFIG.craftableSaddleBackport.get()) event.addPackFinders(
                 ResourceLocation.fromNamespaceAndPath(
                         "misctweaks",
                         //? if 1.21.1
-                        "craftable_saddle_old"
+                        /^"craftable_saddle_old"^/
                         //? if > 1.21.1
-                        /*"craftable_saddle"*/
+                        "craftable_saddle"
                 ),
                 PackType.SERVER_DATA,
                 Component.literal("Craftable Saddle Backport"),
@@ -27,6 +27,6 @@ public class CraftableSaddleDatapack {
                 true,
                 Pack.Position.TOP
         );
-        //?}
+        *///?}
     }
 }
