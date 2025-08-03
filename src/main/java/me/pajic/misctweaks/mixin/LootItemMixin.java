@@ -45,12 +45,12 @@ public class LootItemMixin {
             return new ItemStack(discs.get(lootContext.getRandom().nextInt(discs.size())));
         }
         //? if < 1.21.6 {
-        /*if (Main.CONFIG.craftableSaddleBackport.get() && original.is(Items.SADDLE)) {
+        if (Main.CONFIG.craftableSaddleBackport.get() && original.is(Items.SADDLE)) {
             ItemStack leather = new ItemStack(Items.LEATHER);
             leather.setCount(UniformGenerator.between(1.0F, 5.0F).getInt(lootContext));
             return leather;
         }
-        *///?}
+        //?}
         return original;
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 
 @Mod("misctweaks")
@@ -24,7 +23,7 @@ public class Main {
                     MOD_ID, "obsidian_like"
             ));
 
-    public Main(IEventBus modEventBus, ModContainer modContainer) {
+    public Main(IEventBus modEventBus) {
         modEventBus.addListener(CraftableSaddleDatapack::registerDatapack);
         ResourceModifications.init();
     }

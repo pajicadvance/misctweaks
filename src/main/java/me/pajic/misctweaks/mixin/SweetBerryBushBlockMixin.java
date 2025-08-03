@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.SweetBerryBushBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 //? if >= 1.21.4
-import net.minecraft.server.level.ServerLevel;
+/*import net.minecraft.server.level.ServerLevel;*/
 
 @Mixin(SweetBerryBushBlock.class)
 public class SweetBerryBushBlockMixin {
@@ -22,15 +22,15 @@ public class SweetBerryBushBlockMixin {
             at = @At(
                     value = "INVOKE",
                     //? if 1.21.1
-                    /*target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"*/
+                    target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"
                     //? if >= 1.21.4
-                    target = "Lnet/minecraft/world/entity/Entity;hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z"
+                    /*target = "Lnet/minecraft/world/entity/Entity;hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z"*/
             )
     )
     //? if 1.21.1
-    /*private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance, DamageSource source, float amount, Operation<Boolean> original) {*/
+    private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance, DamageSource source, float amount, Operation<Boolean> original) {
     //? if >= 1.21.4
-    private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance, ServerLevel serverLevel, DamageSource source, float amount, Operation<Boolean> original) {
+    /*private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance, ServerLevel serverLevel, DamageSource source, float amount, Operation<Boolean> original) {*/
         if (instance instanceof Player p) {
             if (
                     (Main.CONFIG.sneakingPreventsBerryBushDamage.get() && p.isShiftKeyDown()) ||
@@ -40,8 +40,8 @@ public class SweetBerryBushBlockMixin {
             }
         }
         //? if 1.21.1
-        /*return original.call(instance, source, amount);*/
+        return original.call(instance, source, amount);
         //? if >= 1.21.4
-        return original.call(instance, serverLevel, source, amount);
+        /*return original.call(instance, serverLevel, source, amount);*/
     }
 }

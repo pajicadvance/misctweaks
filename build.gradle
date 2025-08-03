@@ -1,9 +1,7 @@
 plugins {
     id 'java-library'
-    id 'eclipse'
     id 'idea'
-    id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.184'
+    id 'net.neoforged.gradle.userdev' version '7.0.192'
     id "me.modmuss50.mod-publish-plugin" version "0.8.4"
 }
 
@@ -133,6 +131,4 @@ publishMods {
         serverRequired = true
         requires("fzzy-config")
     }
-
-    //dryRun = true
 }

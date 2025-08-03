@@ -14,9 +14,9 @@ import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 //? if 1.21.1
-/*import net.minecraft.world.item.enchantment.effects.DamageItem;*/
+import net.minecraft.world.item.enchantment.effects.DamageItem;
 //? if >= 1.21.4
-import net.minecraft.world.item.enchantment.effects.ChangeItemDamage;
+/*import net.minecraft.world.item.enchantment.effects.ChangeItemDamage;*/
 
 @Mixin(Enchantment.class)
 public class EnchantmentMixin {
@@ -31,12 +31,12 @@ public class EnchantmentMixin {
     private boolean preventEquipmentDamage(EnchantmentLocationBasedEffect instance, ServerLevel serverLevel, int i, EnchantedItemInUse enchantedItemInUse, Entity entity, Vec3 vec3, boolean b) {
         if (
                 //? if 1.21.1
-                /*instance instanceof DamageItem*/
+                instance instanceof DamageItem
                 //? if >= 1.21.4
-                instance instanceof ChangeItemDamage
+                /*instance instanceof ChangeItemDamage*/
         ) {
             ResourceLocation enchantment = serverLevel.registryAccess()
-                    ./*? if 1.21.1 {*//*registryOrThrow*//*?}*//*? if >= 1.21.4 {*/lookupOrThrow/*?}*/
+                    ./*? if 1.21.1 {*/registryOrThrow/*?}*//*? if >= 1.21.4 {*//*lookupOrThrow*//*?}*/
                     (Registries.ENCHANTMENT).getKey((Enchantment) (Object) this);
             return (!Main.CONFIG.soulSpeedNoDamage.get() || Enchantments.SOUL_SPEED.location() != enchantment) &&
                     (!Main.CONFIG.thornsNoDamage.get() || Enchantments.THORNS.location() != enchantment);

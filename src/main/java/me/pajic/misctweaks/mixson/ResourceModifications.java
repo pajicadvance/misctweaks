@@ -9,6 +9,7 @@ import net.ramixin.mixson.inline.Mixson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("removal")
 public class ResourceModifications {
 
     public static final JsonElement lodestonePool = JsonParser.parseString("""
@@ -44,7 +45,7 @@ public class ResourceModifications {
     public static void init() {
         if (!FMLLoader.isProduction()) Mixson.setDebugMode(DebugMode.EXPORT);
         //? if < 1.21.5 {
-        /*if (Main.CONFIG.lodestoneChangesBackport.get()) {
+        if (Main.CONFIG.lodestoneChangesBackport.get()) {
             Mixson.registerEvent(
                     Mixson.DEFAULT_PRIORITY,
                     "minecraft:recipe/lodestone",
@@ -102,7 +103,7 @@ public class ResourceModifications {
                             .addProperty("parent", "minecraft:adventure/root")
             );
         }
-        *///?}
+        //?}
     }
 
     public static void clientInit() {
