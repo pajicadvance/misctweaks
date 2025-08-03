@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 //?}
 
+@SuppressWarnings("removal")
 public class ResourceModifications {
     //? if > 1.20.1 {
     public static final JsonElement lodestonePool = JsonParser.parseString("""

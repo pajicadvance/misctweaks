@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'fabric-loom' version '1.11-SNAPSHOT'
     id "me.modmuss50.mod-publish-plugin" version "0.8.4"
 }
 
@@ -30,7 +30,9 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     if (stonecutter.eval(stonecutter.current.version, ">1.20.1")) {
-        include(modImplementation("com.github.ramixin:mixson-fabric:${property("mixson_version")}"))
+        include(modImplementation("com.github.ramixin:mixson-fabric:${property("mixson_version")}")) {
+            exclude group: "net.fabricmc.fabric-api", module: "fabric-api"
+        }
     }
     modImplementation "net.fabricmc.fabric-api:fabric-api:${property("fabric_version")}"
     modImplementation "com.terraformersmc:modmenu:${property("modmenu_version")}"
@@ -103,6 +105,4 @@ publishMods {
         requires("fabric-api", "fzzy-config")
         optional("modmenu")
     }
-
-    //dryRun = true
 }

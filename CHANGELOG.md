@@ -1,2 +1,3 @@
-- Updated to Minecraft 1.21.7.
-- Fixed a bug which caused config options not applicable to the current MC version to be shown in the config menu.
+- Updated library mods.
+- Added support for 1.21.8.
+- Dropped support for 1.21.5 and 1.21.7.
