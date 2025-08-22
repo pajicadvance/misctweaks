@@ -1,3 +1,1 @@
-- Updated library mods.
-- Added support for 1.21.8.
-- Dropped support for 1.21.5 and 1.21.7.
+- Fixed creeper explosions not respecting the mobGriefing gamerule.
