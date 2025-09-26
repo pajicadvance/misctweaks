@@ -1,1 +1,1 @@
-- Fixed creeper explosions not respecting the mobGriefing gamerule.
+- Improved compatibility of the elytra swim tweak with other mods.

@@ -32,7 +32,7 @@ public abstract class PlayerMixin extends LivingEntity {
     )
     private void cancelElytraFlyingInLiquid(CallbackInfo ci) {
         if (
-                Main.CONFIG.elytraSwimTweak.get() && isInLiquid() &&
+                Main.CONFIG.elytraSwimTweak.get() && isFallFlying() && isInLiquid() &&
                 //? if 1.21.1
                 getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem
                 //? if >= 1.21.4
