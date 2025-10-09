@@ -1,1 +1,1 @@
-- Improved compatibility of the elytra swim tweak with other mods.
+- Updated to Minecraft 1.21.10.

@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 public class CraftableSaddleDatapack {
     public static void init() {
         //? if < 1.21.6 {
-        if (Main.CONFIG.craftableSaddleBackport.get()) {
+        /*if (Main.CONFIG.craftableSaddleBackport.get()) {
             FabricLoader.getInstance().getModContainer("misctweaks").ifPresent(modContainer ->
                     ResourceManagerHelper.registerBuiltinResourcePack(
                             MultiVersionUtil.fromNamespaceAndPath(MultiVersionUtil.getSaddleRecipePath()),
@@ -19,6 +19,6 @@ public class CraftableSaddleDatapack {
                     )
             );
         }
-        //?}
+        *///?}
     }
 }

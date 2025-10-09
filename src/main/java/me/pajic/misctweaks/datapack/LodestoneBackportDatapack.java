@@ -1,6 +1,6 @@
 package me.pajic.misctweaks.datapack;
 
-//? if = 1.20.1 {
+//? if 1.20.1 {
 /*import me.pajic.misctweaks.Main;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -19,7 +19,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 public class LodestoneBackportDatapack {
     public static void init() {
-        //? if = 1.20.1 {
+        //? if 1.20.1 {
         /*if (Main.CONFIG.lodestoneChangesBackport.get()) {
             FabricLoader.getInstance().getModContainer("misctweaks").ifPresent(modContainer ->
                     ResourceManagerHelper.registerBuiltinResourcePack(

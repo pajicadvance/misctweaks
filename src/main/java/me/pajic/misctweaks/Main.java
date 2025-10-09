@@ -33,9 +33,9 @@ public class Main implements ModInitializer {
     public void onInitialize() {
         //? if > 1.20.1
         ResourceModifications.init();
-        //? if = 1.20.1
+        //? if 1.20.1
         /*LodestoneBackportDatapack.init();*/
         //? if < 1.21.6
-        CraftableSaddleDatapack.init();
+        /*CraftableSaddleDatapack.init();*/
     }
 }

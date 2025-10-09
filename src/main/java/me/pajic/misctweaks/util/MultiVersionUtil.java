@@ -23,8 +23,8 @@ public class MultiVersionUtil {
         //? if < 1.21.1
         /*return "craftable_saddle_even_older";*/
         //? if 1.21.1
-        return "craftable_saddle_old";
+        /*return "craftable_saddle_old";*/
         //? if > 1.21.1
-        /*return "craftable_saddle";*/
+        return "craftable_saddle";
     }
 }
