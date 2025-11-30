@@ -1,0 +1,40 @@
+package me.pajic.misctweaks.mixin;
+
+import me.pajic.misctweaks.MiscTweaks;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+//? if < 1.21.10
+//import net.minecraft.world.item.ElytraItem;
+//? if > 1.20.1
+import net.minecraft.core.component.DataComponents;
+
+@Mixin(Player.class)
+public class PlayerMixin {
+
+    @Inject(
+            method = "tick",
+            at = @At("HEAD")
+    )
+    private void cancelElytraFlyingInLiquid(CallbackInfo ci) {
+		Player self = (Player) (Object) this;
+        if (
+				MiscTweaks.CONFIG.elytraSwimTweak.get() &&
+                self.isFallFlying() &&
+                //? if >= 1.21.1
+				self.isInLiquid() &&
+                //? if < 1.21.1
+                //self.isInWaterOrBubble() || self.isInLava() &&
+                //? if <= 1.21.1
+                //self.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ElytraItem
+                //? if > 1.21.1
+				self.getItemBySlot(EquipmentSlot.CHEST).has(DataComponents.GLIDER)
+        ) {
+            self.stopFallFlying();
+			self.setSwimming(true);
+        }
+    }
+}
