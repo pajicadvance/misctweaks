@@ -10,6 +10,8 @@ import net.ramixin.mixson.inline.Mixson;
 
 public class ResourceModifications {
 
+	private static boolean initialized = false;
+
 	public static final JsonElement lodestonePool = JsonParser.parseString("""
         {
           "bonus_rolls": 0.0,
@@ -39,6 +41,7 @@ public class ResourceModifications {
     """);
 
 	public static void init() {
+		if (initialized) return;
 		//? if < 1.21.10 {
         /*if (MiscTweaks.CONFIG.lodestoneChangesBackport.get()) {
             Mixson.registerEvent(
@@ -106,5 +109,6 @@ public class ResourceModifications {
             );
         }
         *///?}
+		initialized = true;
 	}
 }
