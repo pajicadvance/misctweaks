@@ -5,7 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.level./*? if > 1.21.10 {*//*gamerules.*//*?}*/GameRules;
+import net.minecraft.world.level./*? if > 1.21.10 {*/gamerules./*?}*/GameRules;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,7 +33,7 @@ public abstract class CreeperMixin extends Monster {
         //? if < 1.21.10
         //boolean mobGriefing = level().getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING);
         //? if >= 1.21.10
-        boolean mobGriefing = ((ServerLevel) level()).getGameRules()./*? if > 1.21.10 {*//*get*//*?} else {*/getBoolean/*?}*/(GameRules./*? if > 1.21.10 {*//*MOB_GRIEFING*//*?} else {*/RULE_MOBGRIEFING/*?}*/);
+        boolean mobGriefing = ((ServerLevel) level()).getGameRules()./*? if > 1.21.10 {*/get/*?} else {*//*getBoolean*//*?}*/(GameRules./*? if > 1.21.10 {*/MOB_GRIEFING/*?} else {*//*RULE_MOBGRIEFING*//*?}*/);
         return MiscTweaks.CONFIG.creeperExplosionDropsAllItems.get() && mobGriefing ? Level.ExplosionInteraction.TNT : original;
     }
 }

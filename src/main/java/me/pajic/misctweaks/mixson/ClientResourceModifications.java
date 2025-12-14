@@ -6,7 +6,10 @@ import net.ramixin.mixson.inline.Mixson;
 
 public class ClientResourceModifications {
 
+	private static boolean initialized = false;
+
 	public static void init() {
+		if (initialized) return;
 		if (MiscTweaksClient.CONFIG.lowerShield.get()) MiscTweaksClient.CONFIG.shields.forEach(id -> {
 			String namespace = id.getNamespace();
 			String path = id.getPath();
@@ -30,5 +33,6 @@ public class ClientResourceModifications {
 					true
 			);
 		});
+		initialized = true;
 	}
 }

@@ -3,6 +3,7 @@ package me.pajic.misctweaks.platform.neoforge;
 //? neoforge {
 
 /*import me.pajic.misctweaks.MiscTweaks;
+import me.pajic.misctweaks.mixson.ClientResourceModifications;
 import me.pajic.misctweaks.mixson.ResourceModifications;
 import me.pajic.misctweaks.platform.Platform;
 import net.minecraft.network.chat.Component;
@@ -49,6 +50,7 @@ public class NeoforgeEntrypoint {
 
 	@SubscribeEvent
 	private static void initRegistry(RegisterEvent event) {
+		ClientResourceModifications.init();
 		ResourceModifications.init();
 	}
 }

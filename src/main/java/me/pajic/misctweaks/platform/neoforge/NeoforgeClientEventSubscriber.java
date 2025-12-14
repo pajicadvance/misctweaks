@@ -15,7 +15,6 @@ public class NeoforgeClientEventSubscriber {
 
 	@SubscribeEvent
 	public static void onClientSetup(final FMLClientSetupEvent event) {
-		ClientResourceModifications.init();
 		MiscTweaksClient.onInitializeClient();
 	}
 }

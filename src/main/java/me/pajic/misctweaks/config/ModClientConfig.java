@@ -12,7 +12,7 @@ import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;
 import me.pajic.misctweaks.MiscTweaks;
 import me.pajic.misctweaks.MiscTweaksClient;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 @ClientModifiable
 @Version(version = 1)
@@ -24,7 +24,7 @@ public class ModClientConfig extends Config {
     @RequiresAction(action = Action.RESTART)
     public ValidatedBoolean lowerShield = new ValidatedBoolean(true);
     @RequiresAction(action = Action.RESTART)
-    public ValidatedList<ResourceLocation> shields = ValidatedIdentifier.ofRegistry(MiscTweaks.vanillaId("shield"), BuiltInRegistries.ITEM).toList(MiscTweaks.vanillaId("shield"));
+    public ValidatedList<Identifier> shields = ValidatedIdentifier.ofRegistry(MiscTweaks.vanillaId("shield"), BuiltInRegistries.ITEM).toList(MiscTweaks.vanillaId("shield"));
     @RequiresAction(action = Action.RESTART)
     public ValidatedFloat offset = new ValidatedFloat(-4.0F, 0F, -5.0F);
 }
