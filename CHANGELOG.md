@@ -1,2 +1,1 @@
-- Updated to Minecraft 1.21.11.
-- Fixed Fabric 1.20.1 version not working on Java 17.
+- Fixed "Leg armor prevents berry bush damage" tweak not working on Fabric 1.20.1.

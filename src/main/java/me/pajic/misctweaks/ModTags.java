@@ -10,11 +10,6 @@ import java.util.List;
 
 public class ModTags {
 
-	//? if < 1.21.1 {
-    /*public static final TagKey<Item> LEG_ARMOR = TagKey.create(
-            Registries.ITEM, MiscTweaks.id("leg_armor")
-    );
-    *///?}
 	public static final TagKey<Block> OBSIDIAN_LIKE = TagKey.create(
 			Registries.BLOCK, MiscTweaks.id("obsidian_like")
 	);

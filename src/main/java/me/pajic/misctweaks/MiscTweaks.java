@@ -19,7 +19,7 @@ import me.pajic.misctweaks.platform.fabric.FabricPlatform;
 public class MiscTweaks {
 
 	public static final String MOD_ID = /*$ mod_id*/ "misctweaks";
-	public static final String MOD_VERSION = /*$ mod_version*/ "1.2.8";
+	public static final String MOD_VERSION = /*$ mod_version*/ "1.2.9";
 	public static final String MOD_FRIENDLY_NAME = /*$ mod_name*/ "MiscTweaks";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final Identifier CONFIG_RL = id("config");

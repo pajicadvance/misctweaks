@@ -3,9 +3,6 @@ package me.pajic.misctweaks.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.pajic.misctweaks.MiscTweaks;
-import me.pajic.misctweaks.ModTags;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,6 +10,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+//? if < 1.21.1
+//import net.minecraft.world.item.ArmorItem;
+//? if >= 1.21.1 {
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.ItemTags;
+//?}
 
 @Mixin(SweetBerryBushBlock.class)
 public class SweetBerryBushBlockMixin {
@@ -34,12 +37,12 @@ public class SweetBerryBushBlockMixin {
         if (instance instanceof Player p) {
             if (
                     (MiscTweaks.CONFIG.sneakingPreventsBerryBushDamage.get() && p.isShiftKeyDown()) ||
-                    (MiscTweaks.CONFIG.legArmorPreventsBerryBushDamage.get() && p.getItemBySlot(EquipmentSlot.LEGS).is(
-                            //? if >= 1.21.1
-                            ItemTags.LEG_ARMOR
+                    (MiscTweaks.CONFIG.legArmorPreventsBerryBushDamage.get() &&
+							//? if >= 1.21.1
+							p.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR)
                             //? if < 1.21.1
-                            //ModTags.LEG_ARMOR
-                    ))
+							//p.getItemBySlot(EquipmentSlot.LEGS).getItem() instanceof ArmorItem ai && ai.getType() == ArmorItem.Type.LEGGINGS
+                    )
             ) {
                 return false;
             }
