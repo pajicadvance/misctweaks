@@ -9,7 +9,6 @@ import me.fzzyhmstrs.fzzy_config.validation.collection.ValidatedList;
 import me.fzzyhmstrs.fzzy_config.validation.minecraft.ValidatedIdentifier;
 import me.fzzyhmstrs.fzzy_config.validation.misc.ValidatedBoolean;
 import me.fzzyhmstrs.fzzy_config.validation.number.ValidatedFloat;
-import me.pajic.misctweaks.MiscTweaks;
 import me.pajic.misctweaks.MiscTweaksClient;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
@@ -24,7 +23,9 @@ public class ModClientConfig extends Config {
     @RequiresAction(action = Action.RESTART)
     public ValidatedBoolean lowerShield = new ValidatedBoolean(true);
     @RequiresAction(action = Action.RESTART)
-    public ValidatedList<Identifier> shields = ValidatedIdentifier.ofRegistry(MiscTweaks.vanillaId("shield"), BuiltInRegistries.ITEM).toList(MiscTweaks.vanillaId("shield"));
+    public ValidatedList<Identifier> shields = ValidatedIdentifier
+			.ofRegistry(Identifier.withDefaultNamespace("shield"), BuiltInRegistries.ITEM)
+			.toList(Identifier.withDefaultNamespace(("shield")));
     @RequiresAction(action = Action.RESTART)
     public ValidatedFloat offset = new ValidatedFloat(-4.0F, 0F, -5.0F);
 }

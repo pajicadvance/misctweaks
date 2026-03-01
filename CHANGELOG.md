@@ -1,1 +1,13 @@
-- Fixed "Leg armor prevents berry bush damage" tweak not working on Fabric 1.20.1.
+- Added new feature "Animals search for food": Animals will search for food items dropped on the ground near them and eat it on their own.
+  - Enabled by default for all entities which are considered animals, including ones added by other mods. 
+  - Search behavior can be configured or disabled for each animal in the mod configuration.
+- Added new feature "Improved saplings": Allows configuring vanilla saplings to be able to grow tree variants added by other mods.
+  - Disabled by default. When enabled, sapling growth will be controlled entirely by this mod.
+  - Requires manually configuring trees available for each sapling.
+  - The default configuration includes vanilla trees and an example configuration for [Geophilic](https://modrinth.com/datapack/geophilic).
+- Added new option "Armor reduces berry bush slow": Reduces the intensity of the slow effect when moving through berry bushes while wearing leg armor.
+  - Enabled by default, reduces slow by roughly 50%.
+  - Affects every entity wearing leg or body armor.
+- "Armor prevents berry bush damage" now affects every entity wearing leg or body armor.
+- "Faster obsidian mining" is now configured in the mod configuration itself by adding blocks to the "Obsidian blocks" list. A datapack is no longer required.
+- Dropped support for Minecraft 1.20.1 and 1.21.10.

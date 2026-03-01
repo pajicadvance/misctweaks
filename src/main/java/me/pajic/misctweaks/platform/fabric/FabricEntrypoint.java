@@ -22,11 +22,6 @@ public class FabricEntrypoint implements ModInitializer {
 
 	private void initConditionalCommonResources() {
 		FabricLoader.getInstance().getModContainer(MiscTweaks.MOD_ID).ifPresent(modContainer -> {
-			ResourceManagerHelper.registerBuiltinResourcePack(
-					MiscTweaks.id(MiscTweaks.xplat().packPath(Platform.VersionedPackType.DATA)),
-					modContainer,
-					ResourcePackActivationType.ALWAYS_ENABLED
-			);
 			//? if < 1.21.10 {
 			/*if (MiscTweaks.CONFIG.craftableSaddleBackport.get()) ResourceManagerHelper.registerBuiltinResourcePack(
 					MiscTweaks.id(MiscTweaks.xplat().mcVersion().replace(".", "_") + "/craftable_saddle"),

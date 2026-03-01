@@ -28,14 +28,6 @@ public class NeoforgeEntrypoint {
 
 	@SubscribeEvent
 	private static void initCommonResources(AddPackFindersEvent event) {
-		event.addPackFinders(
-				MiscTweaks.id(MiscTweaks.xplat().packPath(Platform.VersionedPackType.DATA)),
-				PackType.SERVER_DATA,
-				Component.literal("MiscTweaks " + MiscTweaks.xplat().mcVersion() + " Data Pack"),
-				PackSource.BUILT_IN,
-				true,
-				Pack.Position.TOP
-		);
 		//? if < 1.21.10 {
 		/^if (MiscTweaks.CONFIG.craftableSaddleBackport.get()) event.addPackFinders(
 				MiscTweaks.id("resourcepacks/" + MiscTweaks.xplat().mcVersion().replace(".", "_") + "/craftable_saddle"),

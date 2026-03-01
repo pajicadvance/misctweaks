@@ -1,11 +1,10 @@
 package me.pajic.misctweaks.mixin;
 
-//? if > 1.20.1 {
-
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import me.pajic.misctweaks.MiscTweaks;
-import me.pajic.misctweaks.ModTags;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,8 +21,8 @@ public class ToolMixin {
 			)
 	)
 	private <T> Object modifyMiningSpeed(T original, @Local(argsOnly = true) BlockState state) {
-		return MiscTweaks.CONFIG.fasterObsidianMining.get() && state.is(ModTags.OBSIDIAN_LIKE) ?
-				MiscTweaks.CONFIG.obsidianMiningSpeedMultiplier.get() * (float) original : original;
+		return MiscTweaks.CONFIG.fasterObsidianMining.get() && MiscTweaks.CONFIG.obsidianBlocks.get().stream().anyMatch(
+				id -> state.is(ResourceKey.create(Registries.BLOCK, id))
+		) ? MiscTweaks.CONFIG.obsidianMiningSpeedMultiplier.get() * (float) original : original;
 	}
 }
-//?}

@@ -1,18 +1,11 @@
 package me.pajic.misctweaks;
 
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 import java.util.List;
 
-public class ModTags {
-
-	public static final TagKey<Block> OBSIDIAN_LIKE = TagKey.create(
-			Registries.BLOCK, MiscTweaks.id("obsidian_like")
-	);
+public class ModUtil {
 	public static final List<Item> DISCS = List.of(
 			Items.MUSIC_DISC_13,
 			Items.MUSIC_DISC_CAT,

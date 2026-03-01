@@ -1,7 +1,5 @@
 package me.pajic.misctweaks.mixin;
 
-//? if > 1.20.1 {
-
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import me.pajic.misctweaks.MiscTweaks;
 import net.minecraft.core.registries.Registries;
@@ -29,11 +27,10 @@ public class EnchantmentMixin {
 	)
 	private boolean preventEquipmentDamage(EnchantmentLocationBasedEffect instance, ServerLevel serverLevel, int i, EnchantedItemInUse enchantedItemInUse, Entity entity, Vec3 vec3, boolean b) {
 		if (instance instanceof /*? if >= 1.21.10 {*/ChangeItemDamage/*?} else {*//*DamageItem*//*?}*/) {
-			Identifier enchantment = serverLevel.registryAccess()./*? if >= 1.21.10 {*/lookupOrThrow/*?} else {*//*registryOrThrow*//*?}*/(Registries.ENCHANTMENT).getKey((Enchantment) (Object) this);
-			return (!MiscTweaks.CONFIG.soulSpeedNoDamage.get() || Enchantments.SOUL_SPEED./*? if > 1.21.10 {*/identifier()/*?} else {*//*location()*//*?}*/ != enchantment) &&
-					(!MiscTweaks.CONFIG.thornsNoDamage.get() || Enchantments.THORNS./*? if > 1.21.10 {*/identifier()/*?} else {*//*location()*//*?}*/ != enchantment);
+			Identifier enchantment = serverLevel.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getKey((Enchantment) (Object) this);
+			return (!MiscTweaks.CONFIG.soulSpeedNoDamage.get() || Enchantments.SOUL_SPEED.identifier() != enchantment) &&
+					(!MiscTweaks.CONFIG.thornsNoDamage.get() || Enchantments.THORNS.identifier() != enchantment);
 		}
 		return true;
 	}
 }
-//?}

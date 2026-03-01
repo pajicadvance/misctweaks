@@ -1,6 +1,6 @@
 package me.pajic.misctweaks.mixin;
 
-import me.pajic.misctweaks.ModTags;
+import me.pajic.misctweaks.ModUtil;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import com.llamalad7.mixinextras.sugar.Local;
 import me.pajic.misctweaks.MiscTweaks;
@@ -27,7 +27,7 @@ public abstract class LootItemMixin {
     private <T> T swapLootItem(T stack, @Local(argsOnly = true) LootContext lootContext) {
 		ItemStack original = (ItemStack) stack;
         if (MiscTweaks.CONFIG.randomizeDiscLoot.get() && (original.is(Items.MUSIC_DISC_13) || original.is(Items.MUSIC_DISC_CAT))) {
-            return (T) new ItemStack(ModTags.DISCS.get(lootContext.getRandom().nextInt(ModTags.DISCS.size())));
+            return (T) new ItemStack(ModUtil.DISCS.get(lootContext.getRandom().nextInt(ModUtil.DISCS.size())));
         }
         //? if < 1.21.10 {
         /*if (MiscTweaks.CONFIG.craftableSaddleBackport.get() && original.is(Items.SADDLE)) {

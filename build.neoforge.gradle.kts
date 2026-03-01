@@ -32,6 +32,18 @@ stonecutter {
 		direction = dir
 		replace("ResourceLocation", "Identifier")
 	}
+	replacements.string {
+		direction = dir
+		replace(".location()", ".identifier()")
+	}
+	replacements.string {
+		direction = dir
+		replace(".registryOrThrow", ".lookupOrThrow")
+	}
+	replacements.string {
+		direction = dir
+		replace("net.minecraft.world.entity.animal.horse.AbstractHorse", "net.minecraft.world.entity.animal.equine.AbstractHorse")
+	}
 }
 
 fletchingTable {
