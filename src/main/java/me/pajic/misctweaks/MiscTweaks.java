@@ -3,10 +3,9 @@ package me.pajic.misctweaks;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.pajic.misctweaks.config.ModConfig;
 import me.pajic.misctweaks.mixson.AssetPatches;
+import me.pajic.misctweaks.mixson.MixsonHelper;
 import me.pajic.misctweaks.platform.Platform;
 import net.minecraft.resources.Identifier;
-import net.ramixin.mixson.Mixson;
-import net.ramixin.mixson.enums.DebugOption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,11 +24,7 @@ public class MiscTweaks {
 	public static ModConfig CONFIG = ConfigApiJava.registerAndLoadConfig(ModConfig::new);
 
 	public static void onInitialize() {
-		if (PLATFORM.isDebug()) {
-			Mixson.enableDebugOption(DebugOption.BASIC_LOGGING);
-			Mixson.enableDebugOption(DebugOption.EXTRA_LOGGING);
-			Mixson.enableDebugOption(DebugOption.EXPORT_PATCHED_FILE);
-		}
+		MixsonHelper.setDebugFlags();
 	}
 
 	public static void onInitializeClient() {

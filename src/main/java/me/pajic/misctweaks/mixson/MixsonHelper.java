@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import me.pajic.misctweaks.MiscTweaks;
 import net.ramixin.mixson.Mixson;
 import net.ramixin.mixson.MixsonCodecs;
+import net.ramixin.mixson.enums.DebugOption;
 import net.ramixin.mixson.enums.ErrorPolicy;
 import net.ramixin.mixson.enums.Lifetime;
 import net.ramixin.mixson.util.Index;
@@ -15,6 +16,14 @@ import java.util.function.Predicate;
 public class MixsonHelper {
 
 	private static final ErrorPolicy ERROR_POLICY = MiscTweaks.xplat().isDebug() ? ErrorPolicy.THROW : ErrorPolicy.LOG;
+
+	public static void setDebugFlags() {
+		if (MiscTweaks.xplat().isDebug()) {
+			Mixson.enableDebugOption(DebugOption.BASIC_LOGGING);
+			Mixson.enableDebugOption(DebugOption.EXTRA_LOGGING);
+			Mixson.enableDebugOption(DebugOption.EXPORT_PATCHED_FILE);
+		}
+	}
 
 	public static UUID registerMultiJsonPersistent(String eventName, Predicate<Index> resourcePredicate, Event<JsonElement> event) {
 		return Mixson.registerEvent(

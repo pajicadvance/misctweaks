@@ -1,3 +1,1 @@
-- Updated to Minecraft 26.1.
-- Expanded "Flammable cobwebs" option to allow making any block flammable, with configurable ignite and burn odds.
-- Shield height offset is now configured for each shield individually instead of having one global offset.
+- Relaxed MC version requirement so that I don't have to upload a new file every time MC gets a hotfix. No functional changes to the mod.
