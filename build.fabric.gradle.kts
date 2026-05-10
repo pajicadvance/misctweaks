@@ -48,6 +48,7 @@ repositories {
 	strictMaven("https://maven.terraformersmc.com/", "com.terraformersmc") { name = "TerraformersMC" }
 	strictMaven("https://jitpack.io") { name = "Jitpack" }
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
+	maven("https://maven.caffeinemc.net/releases") { name = "CaffeineMC" }
 }
 
 dependencies {
@@ -62,4 +63,6 @@ dependencies {
 	include("com.github.ramixin:mixson-fabric:${prop("deps.mixson")}") {
 		exclude(group = "net.fabricmc.fabric-api", module = "fabric-api")
 	}
+	compileOnlyApi("net.caffeinemc:sodium-fabric-api:${prop("deps.sodium")}")
+	runtimeOnly("net.caffeinemc:sodium-fabric:${prop("deps.sodium")}")
 }

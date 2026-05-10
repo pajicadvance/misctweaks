@@ -51,19 +51,20 @@ public class ModConfig extends Config {
 		);
     }
 
-    public ValidatedBoolean sneakingPreventsBerryBushDamage = new ValidatedBoolean(true);
-    public ValidatedBoolean armorPreventsBerryBushDamage = new ValidatedBoolean(true);
-	public ValidatedBoolean armorReducesBerryBushSlow = new ValidatedBoolean(true);
+    public ValidatedBoolean sneakingPreventsBerryBushDamage = new ValidatedBoolean();
+    public ValidatedBoolean armorPreventsBerryBushDamage = new ValidatedBoolean();
+	public ValidatedBoolean armorReducesBerryBushSlow = new ValidatedBoolean();
 	public ValidatedDouble berryBushSlowReduction = new ValidatedDouble(1.7, 2.2, 1.0);
-    public ValidatedBoolean elytraSwimTweak = new ValidatedBoolean(true);
-    public ValidatedBoolean soulSpeedNoDamage = new ValidatedBoolean(true);
-    public ValidatedBoolean thornsNoDamage = new ValidatedBoolean(true);
-    public ValidatedBoolean creeperExplosionDropsAllItems = new ValidatedBoolean(true);
-	@RequiresAction(action = Action.RESTART) public ValidatedBoolean flammableCobweb = new ValidatedBoolean(true);
+    public ValidatedBoolean elytraSwimTweak = new ValidatedBoolean();
+    public ValidatedBoolean soulSpeedNoDamage = new ValidatedBoolean();
+    public ValidatedBoolean thornsNoDamage = new ValidatedBoolean();
+    public ValidatedBoolean creeperExplosionDropsAllItems = new ValidatedBoolean();
+	public StableBlockDrops stableBlockDrops = new StableBlockDrops();
+	@RequiresAction(action = Action.RESTART) public ValidatedBoolean flammableCobweb = new ValidatedBoolean();
 	@RequiresAction(action = Action.RESTART) public ValidatedSet<FlammableBlockEntry> flammableBlocks = flammableBlockEntry.toSet(
 			new FlammableBlockEntry(Identifier.withDefaultNamespace("cobweb"), 600, 60)
 	);
-    public ValidatedBoolean fasterObsidianMining = new ValidatedBoolean(true);
+    public ValidatedBoolean fasterObsidianMining = new ValidatedBoolean();
     public ValidatedFloat obsidianMiningSpeedMultiplier = new ValidatedFloat(1.6F, 2.0F, 1.0F);
 	public ValidatedList<Identifier> obsidianBlocks = ValidatedIdentifier
 			.ofRegistry(Identifier.withDefaultNamespace("obsidian"), BuiltInRegistries.BLOCK)
@@ -72,11 +73,19 @@ public class ModConfig extends Config {
 					Identifier.withDefaultNamespace("crying_obsidian"),
 					Identifier.withDefaultNamespace("respawn_anchor")
 			);
-	@RequiresAction(action = Action.RESTART) public ValidatedBoolean animalsSearchForFood = new ValidatedBoolean(true);
+	@RequiresAction(action = Action.RESTART) public ValidatedBoolean animalsSearchForFood = new ValidatedBoolean();
 	@RequiresAction(action = Action.RESTART) public ValidatedSet<AnimalConfig> animalConfiguration = animalConfig.toSet();
 	public ImprovedSaplings improvedSaplings = new ImprovedSaplings();
-    public ValidatedBoolean randomizeDiscLoot = new ValidatedBoolean(true);
+    public ValidatedBoolean randomizeDiscLoot = new ValidatedBoolean();
     public ValidatedBoolean preventShulkerDuplication = new ValidatedBoolean(false);
+
+	public class StableBlockDrops extends ConfigSection {
+		public ValidatedBoolean noRandomHorizontalMovement = new ValidatedBoolean();
+		public ValidatedBoolean alwaysSpawnDropInBlockCenter = new ValidatedBoolean();
+		public ValidatedBoolean flingTowardsPlayer = new ValidatedBoolean();
+		public ValidatedBoolean requireCrouchForFling = new ValidatedBoolean();
+		public ValidatedDouble flingMaxRange = new ValidatedDouble(5, 7, 3);
+	}
 
 	public class ImprovedSaplings extends ConfigSection {
 		public ValidatedBoolean enabled = new ValidatedBoolean(false);

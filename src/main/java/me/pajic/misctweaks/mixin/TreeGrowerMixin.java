@@ -40,52 +40,52 @@ public class TreeGrowerMixin {
 			at = @At("HEAD")
 	)
 	private void updateLevelAndPos(
-			ServerLevel serverLevel,
-			ChunkGenerator chunkGenerator,
-			BlockPos blockPos,
-			BlockState blockState,
-			RandomSource randomSource,
+			ServerLevel level,
+			ChunkGenerator generator,
+			BlockPos pos,
+			BlockState state,
+			RandomSource random,
 			CallbackInfoReturnable<Boolean> cir
 	) {
 		if (MiscTweaks.CONFIG.improvedSaplings.enabled.get()) {
-			if (mt$level == null || !mt$level.equals(serverLevel)) mt$level = serverLevel;
-			if (mt$pos == null || !mt$pos.equals(blockPos)) mt$pos = blockPos;
+			if (mt$level == null || !mt$level.equals(level)) mt$level = level;
+			if (mt$pos == null || !mt$pos.equals(pos)) mt$pos = pos;
 		}
 	}
 
     @WrapMethod(method = "getConfiguredFeature")
     private @Nullable ResourceKey<ConfiguredFeature<?, ?>> extendTreePool(
-            RandomSource randomSource,
-            boolean isFlowers,
+            RandomSource random,
+            boolean hasFlowers,
             Operation<ResourceKey<ConfiguredFeature<?, ?>>> original
     ) {
         if (MiscTweaks.CONFIG.improvedSaplings.enabled.get()) {
 			List<TreeFeatureEntry> trees = TreeUtil.getTreesForVariant(name);
             Holder<Biome> biome = TreeUtil.getBiome(mt$level, mt$pos);
             if (biome != null) {
-                if (isFlowers) return TreeUtil.getRandomTree(
-						mt$level, randomSource, TreeUtil.filterTrees(trees, TreeFeatureType.FLOWER_TREE, biome)
+                if (hasFlowers) return TreeUtil.getRandomTree(
+						mt$level, random, TreeUtil.filterTrees(trees, TreeFeatureType.FLOWER_TREE, biome)
                 );
                 else return TreeUtil.getRandomTree(
-						mt$level, randomSource, TreeUtil.filterTrees(trees, TreeFeatureType.TREE, biome)
+						mt$level, random, TreeUtil.filterTrees(trees, TreeFeatureType.TREE, biome)
                 );
             }
         }
-        return original.call(randomSource, isFlowers);
+        return original.call(random, hasFlowers);
     }
 
     @WrapMethod(method = "getConfiguredMegaFeature")
     private @Nullable ResourceKey<ConfiguredFeature<?, ?>> extendMegaTreePool(
-            RandomSource randomSource,
+            RandomSource random,
             Operation<ResourceKey<ConfiguredFeature<?, ?>>> original
     ) {
         if (MiscTweaks.CONFIG.improvedSaplings.enabled.get()) {
 			List<TreeFeatureEntry> trees = TreeUtil.getTreesForVariant(name);
             Holder<Biome> biome = TreeUtil.getBiome(mt$level, mt$pos);
             if (biome != null) return TreeUtil.getRandomTree(
-					mt$level, randomSource, TreeUtil.filterTrees(trees, TreeFeatureType.MEGA_TREE, biome)
+					mt$level, random, TreeUtil.filterTrees(trees, TreeFeatureType.MEGA_TREE, biome)
             );
         }
-        return original.call(randomSource);
+        return original.call(random);
     }
 }

@@ -43,15 +43,15 @@ public class SweetBerryBushBlockMixin {
 					target = "Lnet/minecraft/world/entity/Entity;makeStuckInBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)V"
 			)
 	)
-	private void reduceSlowEffectWhenWearingLegArmor(Entity instance, BlockState state, Vec3 motionMultiplier, Operation<Void> original) {
+	private void reduceSlowEffectWhenWearingLegArmor(Entity instance, BlockState blockState, Vec3 speedMultiplier, Operation<Void> original) {
 		if (MiscTweaks.CONFIG.armorReducesBerryBushSlow.get() && instance instanceof LivingEntity l) {
 			if (l.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR) || l.hasItemInSlot(EquipmentSlot.BODY)) {
 				double d = MiscTweaks.CONFIG.berryBushSlowReduction.get();
 				if (d == 2.2) return;
-				original.call(instance, state, motionMultiplier.multiply(d, d, d));
+				original.call(instance, blockState, speedMultiplier.multiply(d, d, d));
 				return;
 			}
 		}
-		original.call(instance, state, motionMultiplier);
+		original.call(instance, blockState, speedMultiplier);
 	}
 }

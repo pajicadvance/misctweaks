@@ -25,9 +25,9 @@ public abstract class AnimalMixin extends Mob {
             method = "<init>",
             at = @At("TAIL")
     )
-    private void addSearchForFoodGoal(EntityType<? extends Animal> entityType, Level level, CallbackInfo ci) {
+    private void addSearchForFoodGoal(EntityType<? extends Animal> type, Level level, CallbackInfo ci) {
         if (MiscTweaks.CONFIG.animalsSearchForFood.get()) {
-			Identifier id = level.registryAccess().lookupOrThrow(Registries.ENTITY_TYPE).getKey(entityType);
+			Identifier id = level.registryAccess().lookupOrThrow(Registries.ENTITY_TYPE).getKey(type);
 			AnimalConfig config = new AnimalConfig();
 			for (AnimalConfig conf : MiscTweaks.CONFIG.animalConfiguration.get()) {
 				if (conf.id.get().equals(id)) {

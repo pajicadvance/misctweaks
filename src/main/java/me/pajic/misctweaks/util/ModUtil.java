@@ -1,4 +1,4 @@
-package me.pajic.misctweaks;
+package me.pajic.misctweaks.util;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;

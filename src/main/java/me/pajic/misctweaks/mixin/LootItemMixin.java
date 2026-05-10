@@ -2,7 +2,7 @@ package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import me.pajic.misctweaks.MiscTweaks;
-import me.pajic.misctweaks.ModUtil;
+import me.pajic.misctweaks.util.ModUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -22,10 +22,10 @@ public abstract class LootItemMixin {
                     target = "Ljava/util/function/Consumer;accept(Ljava/lang/Object;)V"
             )
     )
-    private <T> T swapLootItem(T stack, @Local(argsOnly = true) LootContext lootContext) {
+    private <T> T swapLootItem(T stack, @Local(argsOnly = true, name = "context") LootContext context) {
 		ItemStack original = (ItemStack) stack;
         if (MiscTweaks.CONFIG.randomizeDiscLoot.get() && (original.is(Items.MUSIC_DISC_13) || original.is(Items.MUSIC_DISC_CAT))) {
-            return (T) new ItemStack(ModUtil.DISCS.get(lootContext.getRandom().nextInt(ModUtil.DISCS.size())));
+            return (T) new ItemStack(ModUtil.DISCS.get(context.getRandom().nextInt(ModUtil.DISCS.size())));
         }
         return (T) original;
     }

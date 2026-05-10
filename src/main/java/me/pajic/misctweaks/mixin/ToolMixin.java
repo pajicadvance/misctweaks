@@ -20,7 +20,7 @@ public class ToolMixin {
 					target = "Ljava/util/Optional;get()Ljava/lang/Object;"
 			)
 	)
-	private <T> Object modifyMiningSpeed(T original, @Local(argsOnly = true) BlockState state) {
+	private <T> Object modifyMiningSpeed(T original, @Local(argsOnly = true, name = "state") BlockState state) {
 		return MiscTweaks.CONFIG.fasterObsidianMining.get() && MiscTweaks.CONFIG.obsidianBlocks.get().stream().anyMatch(
 				id -> state.is(ResourceKey.create(Registries.BLOCK, id))
 		) ? MiscTweaks.CONFIG.obsidianMiningSpeedMultiplier.get() * (float) original : original;

@@ -19,11 +19,11 @@ import org.spongepowered.asm.mixin.injection.At;
 public class MobMixin {
 
     @WrapMethod(method = "canHoldItem")
-    private boolean allowAnimalFoodPickup(ItemStack stack, Operation<Boolean> original) {
+    private boolean allowAnimalFoodPickup(ItemStack itemStack, Operation<Boolean> original) {
         if (MiscTweaks.CONFIG.animalsSearchForFood.get() && (Mob) (Object) this instanceof Animal animal) {
-            return !animal.isBaby() && animal.getAge() == 0 && animal.canFallInLove() && animal.isFood(stack);
+            return !animal.isBaby() && animal.getAge() == 0 && animal.canFallInLove() && animal.isFood(itemStack);
         }
-        return original.call(stack);
+        return original.call(itemStack);
     }
 
     @WrapWithCondition(
@@ -33,15 +33,15 @@ public class MobMixin {
                     target = "Lnet/minecraft/world/entity/Mob;pickUpItem(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/item/ItemEntity;)V"
             )
     )
-    private boolean animalPickupFood(Mob instance, ServerLevel level, ItemEntity itemEntity) {
-        if (MiscTweaks.CONFIG.animalsSearchForFood.get() && instance instanceof Animal animal && animal.isFood(itemEntity.getItem())) {
+    private boolean animalPickupFood(Mob instance, ServerLevel level, ItemEntity entity) {
+        if (MiscTweaks.CONFIG.animalsSearchForFood.get() && instance instanceof Animal animal && animal.isFood(entity.getItem())) {
             if (!animal.isInLove()) {
-                ItemStack itemStack = itemEntity.getItem();
-                animal.onItemPickup(itemEntity);
-                animal.take(itemEntity, 1);
+                ItemStack itemStack = entity.getItem();
+                animal.onItemPickup(entity);
+                animal.take(entity, 1);
                 itemStack.shrink(1);
-                if (itemStack.isEmpty()) itemEntity.discard();
-                animal.setInLove(itemEntity.getOwner() instanceof Player player ? player : null);
+                if (itemStack.isEmpty()) entity.discard();
+                animal.setInLove(entity.getOwner() instanceof Player player ? player : null);
             }
             return false;
         }
@@ -49,8 +49,8 @@ public class MobMixin {
     }
 
     @WrapMethod(method = "canReplaceCurrentItem")
-    private boolean preventBadCheck(ItemStack candidate, ItemStack existing, EquipmentSlot slot, Operation<Boolean> original) {
-        if (MiscTweaks.CONFIG.animalsSearchForFood.get() && (Mob) (Object) this instanceof Animal animal && animal.isFood(candidate)) return false;
-        return original.call(candidate, existing, slot);
+    private boolean preventBadCheck(ItemStack newItemStack, ItemStack currentItemStack, EquipmentSlot slot, Operation<Boolean> original) {
+        if (MiscTweaks.CONFIG.animalsSearchForFood.get() && (Mob) (Object) this instanceof Animal animal && animal.isFood(newItemStack)) return false;
+        return original.call(newItemStack, currentItemStack, slot);
     }
 }
