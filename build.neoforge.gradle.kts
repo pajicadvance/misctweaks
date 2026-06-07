@@ -16,6 +16,10 @@ platform {
 			slug("fzzy-config")
 			forgeVersionRange = "[0,)"
 		}
+		required("mixson") {
+			slug("mixson")
+			forgeVersionRange = "[0,)"
+		}
 	}
 }
 
@@ -47,14 +51,13 @@ repositories {
 	mavenCentral()
 	strictMaven("https://maven.fzzyhmstrs.me/", "me.fzzyhmstrs") { name = "Fzzy Config" }
 	strictMaven("https://thedarkcolour.github.io/KotlinForForge/") { name = "KotlinForForge" }
-	strictMaven("https://jitpack.io") { name = "Jitpack" }
 	strictMaven("https://api.modrinth.com/maven", "maven.modrinth") { name = "Modrinth" }
 	maven("https://maven.caffeinemc.net/releases") { name = "CaffeineMC" }
 }
 
 dependencies {
 	implementation("me.fzzyhmstrs:fzzy_config:${prop("deps.fzzy_config")}+neoforge")
-	implementation("com.github.ramixin:mixson-neoforge:${prop("deps.mixson")}")
+	implementation("maven.modrinth:mixson:${prop("deps.mixson")}")
 	jarJar("com.github.ramixin:mixson-neoforge:${prop("deps.mixson")}")
 	compileOnlyApi("net.caffeinemc:sodium-neoforge-api:${prop("deps.sodium")}")
 	runtimeOnly("net.caffeinemc:sodium-neoforge:${prop("deps.sodium")}")
