@@ -17,6 +17,14 @@ public class AnimalConfig implements Walkable {
 	public ValidatedDouble searchSpeed;
 	public ValidatedInt searchGoalPriority;
 
+	public AnimalConfig(Identifier id, boolean doSearch) {
+		this.id = new ValidatedIdentifier(id);
+		this.doSearch = new ValidatedBoolean(doSearch);
+		this.searchRange = new ValidatedInt(16, 64, 1);
+		this.searchSpeed = new ValidatedDouble(1.25, 2, 1);
+		this.searchGoalPriority = new ValidatedInt(2, Integer.MAX_VALUE, 0);
+	}
+
 	public AnimalConfig() {
 		this.id = ValidatedIdentifier.ofRegistry(Identifier.withDefaultNamespace("cow"), BuiltInRegistries.ENTITY_TYPE);
 		this.doSearch = new ValidatedBoolean();

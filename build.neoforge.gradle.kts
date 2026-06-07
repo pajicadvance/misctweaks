@@ -58,7 +58,6 @@ repositories {
 dependencies {
 	implementation("me.fzzyhmstrs:fzzy_config:${prop("deps.fzzy_config")}+neoforge")
 	implementation("maven.modrinth:mixson:${prop("deps.mixson")}")
-	jarJar("com.github.ramixin:mixson-neoforge:${prop("deps.mixson")}")
 	compileOnlyApi("net.caffeinemc:sodium-neoforge-api:${prop("deps.sodium")}")
 	runtimeOnly("net.caffeinemc:sodium-neoforge:${prop("deps.sodium")}")
 }

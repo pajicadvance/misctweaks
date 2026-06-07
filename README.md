@@ -25,4 +25,4 @@ Client-side:
 
 Tweaks can be toggled on/off and configured. On Fabric, access the in-game config via [Mod Menu](https://modrinth.com/mod/modmenu). On NeoForge, access the in-game config via the built-in mod menu. If [Sodium](https://modrinth.com/mod/sodium) is installed, most client-side features can be configured in Sodium video settings.
 
-All versions require [Fzzy Config](https://modrinth.com/mod/fzzy-config). Fabric version also requires [Fabric API](https://modrinth.com/mod/fabric-api).
+All versions require [Fzzy Config](https://modrinth.com/mod/fzzy-config) and [Mixson](https://modrinth.com/mod/mixson). Fabric version also requires [Fabric API](https://modrinth.com/mod/fabric-api).

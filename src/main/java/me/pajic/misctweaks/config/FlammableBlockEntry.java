@@ -9,7 +9,6 @@ import net.minecraft.resources.Identifier;
 
 @Translation(prefix = "misctweaks.config.flammableBlockEntry")
 public class FlammableBlockEntry implements Walkable {
-
 	public ValidatedIdentifier id;
 	public ValidatedInt igniteOdds;
 	public ValidatedInt burnOdds;
@@ -24,5 +23,10 @@ public class FlammableBlockEntry implements Walkable {
 		this.id = ValidatedIdentifier.ofRegistry(Identifier.withDefaultNamespace("cobweb"), BuiltInRegistries.BLOCK);
 		this.igniteOdds = new ValidatedInt(60, 600, 5);
 		this.burnOdds = new ValidatedInt(100, 1000, 5);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return obj instanceof FlammableBlockEntry fbe && fbe.id.equals(id);
 	}
 }
