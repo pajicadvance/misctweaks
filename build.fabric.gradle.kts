@@ -7,7 +7,7 @@ platform {
 	loader = "fabric"
 	dependencies {
 		required("minecraft") {
-			versionRange = ">=${prop("deps.minecraft")}"
+			versionRange = ">=${prop("deps.minecraft").replace("rc-", "rc.")}"
 		}
 		required("fabric-api") {
 			slug("fabric-api")
@@ -64,5 +64,5 @@ dependencies {
 		exclude(group = "net.fabricmc.fabric-api", module = "fabric-api")
 	}
 	compileOnlyApi("net.caffeinemc:sodium-fabric-api:${prop("deps.sodium")}")
-	runtimeOnly("net.caffeinemc:sodium-fabric:${prop("deps.sodium")}")
+	//runtimeOnly("net.caffeinemc:sodium-fabric:${prop("deps.sodium")}")
 }
