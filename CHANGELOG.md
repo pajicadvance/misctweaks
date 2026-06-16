@@ -1,3 +1,1 @@
-- Removed the "Improved saplings" feature as it needs more work and will probably come back as a separate mod due to its scope.
-- Made wolves not search for food by default.
-- Mixson is now required as a dependency instead of being bundled inside the mod.
+- Update to Fabric 26.2.
