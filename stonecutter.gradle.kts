@@ -39,6 +39,8 @@ stonecutter parameters {
             replace("ValidatedIdentifier", "ValidatedIdentifier")
             replace("ResourceLocation", "Identifier")
             replace("location()", "identifier()")
+            replace("getGuiGraphics()", "getGuiGraphics()")
+            replace("GuiGraphics", "GuiGraphicsExtractor")
         }
     }
 }

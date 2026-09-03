@@ -1,26 +1,26 @@
 # general
-mod.id = "modid"
-mod.name = "Template mod"
+mod.id = "misctweaks"
+mod.name = "MiscTweaks"
 mod.group = "me.pajic"
-mod.version = "1.0.0"
-mod.description = ""
+mod.version = "1.4.2"
+mod.description = "QoL additions and tweaks"
 mod.authors = "pajic"
 mod.contributors = ""
 mod.license = "MIT"
 
 # links
-mod.sources_url = "https://github.com/pajicadvance/modid"
-mod.homepage_url = "https://modrinth.com/mod/modid"
-mod.issues_url = "https://github.com/pajicadvance/modid/issues"
+mod.sources_url = "https://github.com/pajicadvance/misctweaks"
+mod.homepage_url = "https://modrinth.com/mod/misctweaks"
+mod.issues_url = "https://github.com/pajicadvance/misctweaks/issues"
 mod.discord_url = "https://discord.gg/5RkzS66zWb"
 
 # publishing
-publish.modrinth = ""
-publish.curseforge = ""
+publish.modrinth = "9sMkzzYU"
+publish.curseforge = "1227334"
 publish.env.mr = "CLIENT_AND_SERVER" #https://modmuss50.github.io/mod-publish-plugin/platforms/modrinth/#all-options
 publish.env.cf.client = true
 publish.env.cf.server = true
-publish.dry_run = true
+publish.dry_run = false
 
 # loom
 loomx.loom_version = "1.17-SNAPSHOT"
@@ -30,7 +30,8 @@ loader.fabric = "0.19.3"
 dep.mixinconstraints.coords = "com.moulberry:$id:$version"
 dep.fzzy_config.coords = "me.fzzyhmstrs:$id:$version"
 dep.fzzy_config.slug = "fzzy-config"
-dep.sodium.coords = "net.caffeinemc:$id-$loader:$version"
+dep.sodium.coords = "net.caffeinemc:$id-$loader-api:$version"
+dep.sodium_runtime.coords = "net.caffeinemc:sodium-$loader:$version"
 include.mixinconstraints = "1.1.0"
 dev.runtime_optionals = []
 
@@ -46,7 +47,8 @@ mod.mc_releases = ["1.21", "1.21.1"]
 loader.neo = "21.1.244"
 dep.mixson.coords = "com.github:Mixson:$version"
 include.mixson = "2.1.0"
-runtime.sodium = "0.8.12+mc1.21.1"
+optional.sodium = "0.8.12+mc1.21.1"
+runtime.sodium_runtime = "0.8.12+mc1.21.1"
 
 [fabric."1.21.1"]
 mod.mc_compat = ">=1.21 <=1.21.1"
@@ -64,7 +66,8 @@ mod.mc_releases = ["26.1", "26.1.1", "26.1.2"]
 loader.neo = "26.1.2.87"
 dep.mixson.coords = "maven.modrinth:$id:$version"
 required.mixson = "2.2.0"
-runtime.sodium = "0.9.1+mc26.1.2"
+optional.sodium = "0.9.1+mc26.1.2"
+runtime.sodium_runtime = "0.9.1+mc26.1.2"
 
 [fabric."26.1"]
 mod.mc_compat = "~26.1"
@@ -82,7 +85,8 @@ mod.mc_releases = ["26.2"]
 loader.neo = "26.2.0.36-beta"
 dep.mixson.coords = "maven.modrinth:$id:$version"
 required.mixson = "2.2.0"
-runtime.sodium = "0.9.1+mc26.2"
+optional.sodium = "0.9.1+mc26.2"
+runtime.sodium_runtime = "0.9.1+mc26.2"
 
 [fabric."26.2"]
 mod.mc_compat = "~26.2"
@@ -100,7 +104,8 @@ mod.mc_releases = ["26.3-pre.1"]
 #loader.neo = "26.2.0.36-beta"
 dep.mixson.coords = "maven.modrinth:$id:$version"
 required.mixson = "2.2.0"
-#runtime.sodium = "0.9.1+mc26.2"
+optional.sodium = "0.9.1+mc26.2"
+#runtime.sodium_runtime = "0.9.1+mc26.2"
 
 [fabric."26.3"]
 mod.mc_compat = "~26.3"
