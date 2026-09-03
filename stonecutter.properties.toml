@@ -17,7 +17,7 @@ mod.discord_url = "https://discord.gg/5RkzS66zWb"
 # publishing
 publish.modrinth = "9sMkzzYU"
 publish.curseforge = "1227334"
-publish.env.mr = "CLIENT_AND_SERVER" #https://modmuss50.github.io/mod-publish-plugin/platforms/modrinth/#all-options
+publish.env.mr = "CLIENT_OR_SERVER_PREFERS_BOTH" #https://modmuss50.github.io/mod-publish-plugin/platforms/modrinth/#all-options
 publish.env.cf.client = true
 publish.env.cf.server = true
 publish.dry_run = false
