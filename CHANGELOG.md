@@ -1,3 +1,1 @@
-- "Flammable blocks" and "Obsidian blocks" configuration options now also accept item tags.
-- Updated to NeoForge 26.2.
-- Backported all changes since 1.3.1 to Minecraft 1.21.1.
+- Fixed 1.21.1 specific crash on launch when the mod is installed alongside some of my other mods.
