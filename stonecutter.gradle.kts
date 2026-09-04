@@ -41,6 +41,7 @@ stonecutter parameters {
             replace("location()", "identifier()")
             replace("getGuiGraphics()", "getGuiGraphics()")
             replace("GuiGraphics", "GuiGraphicsExtractor")
+            replace("net.ramixin.mixson_backport", "net.ramixin.mixson")
         }
     }
 }
