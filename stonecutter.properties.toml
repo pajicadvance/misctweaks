@@ -2,7 +2,7 @@
 mod.id = "misctweaks"
 mod.name = "MiscTweaks"
 mod.group = "me.pajic"
-mod.version = "1.4.3"
+mod.version = "1.4.4"
 mod.description = "QoL additions and tweaks"
 mod.authors = "pajic"
 mod.contributors = ""

@@ -24,16 +24,17 @@ public class NeoforgeClientEventSubscriber {
     public static void raiseHotbarStart(RenderGuiLayerEvent.Pre event) {
         if (ModClientUtil.shouldRaiseHotbar() && event.getName().equals(VanillaGuiLayers.HOTBAR)) {
             //~ if <26.1 'pushMatrix' -> 'pushPose'
-            event.getGuiGraphics().pose().pushPose();
-            event.getGuiGraphics().pose().translate(0, -MiscTweaksClient.CONFIG.raiseHotbarPixels.get()/^? <26.1 {^/, 0/^?}^/);
+            event.getGuiGraphics().pose().pushMatrix();
+            event.getGuiGraphics().pose().translate(0, -MiscTweaksClient.CONFIG.raiseHotbarPixels.get()/^? <26.1 {^//^, 0^//^?}^/);
         }
     }
 
     @SubscribeEvent
     public static void raiseHotbarEnd(RenderGuiLayerEvent.Post event) {
+        //~ if <26.1 'SPECTATOR_TOOLTIP' -> 'EXPERIENCE_LEVEL'
         if (ModClientUtil.shouldRaiseHotbar() && event.getName().equals(VanillaGuiLayers.SPECTATOR_TOOLTIP)) {
             //~ if <26.1 'popMatrix' -> 'popPose'
-            event.getGuiGraphics().pose().popPose();
+            event.getGuiGraphics().pose().popMatrix();
         }
     }
 }

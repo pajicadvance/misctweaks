@@ -1,1 +1,1 @@
-- Fixed 1.21.1 specific crash on launch when the mod is installed alongside some of my other mods.
+- Fixed experience level rendering incorrectly when raise hotbar is enabled on NeoForge 1.21.1.
