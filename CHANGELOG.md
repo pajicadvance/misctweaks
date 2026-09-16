@@ -1,1 +1,1 @@
-- Fixed experience level rendering incorrectly when raise hotbar is enabled on NeoForge 1.21.1.
+- Added Fabric 26.3 version.
