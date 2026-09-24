@@ -66,6 +66,12 @@ public class ModConfig extends Config {
 	);
     public ValidatedBoolean randomizeDiscLoot = new ValidatedBoolean();
     public ValidatedBoolean preventShulkerDuplication = new ValidatedBoolean(false);
+    //? <26.1 {
+    /*@RequiresAction(action = Action.RESTART)
+    public ValidatedBoolean lodestoneChangesBackport = new ValidatedBoolean(true);
+    @RequiresAction(action = Action.RESTART)
+    public ValidatedBoolean craftableSaddleBackport = new ValidatedBoolean(true);
+    *///?}
 
 	public static class StableBlockDrops extends ConfigSection {
 		public ValidatedBoolean noRandomHorizontalMovement = new ValidatedBoolean();

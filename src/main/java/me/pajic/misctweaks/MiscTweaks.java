@@ -8,6 +8,9 @@ import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//? <26.1
+//import me.pajic.misctweaks.mixson.DataPatches;
+
 public class MiscTweaks {
 
     public static final String MOD_ID = /*$ mod_id*/ "misctweaks";
@@ -16,6 +19,8 @@ public class MiscTweaks {
 
     public static void onInitialize() {
         MixsonHelper.setDebugFlags();
+        //? <26.1
+        //DataPatches.init();
     }
 
     public static Identifier id(String path) {

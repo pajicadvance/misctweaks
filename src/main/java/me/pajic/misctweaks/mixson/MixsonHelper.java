@@ -25,6 +25,18 @@ public class MixsonHelper {
 		}
 	}
 
+    public static void registerSingleJson(String eventName, Index target, Event<JsonElement> event) {
+        Mixson.registerEvent(
+                MixsonCodecs.JSON_ELEMENT,
+                Mixson.DEFAULT_PRIORITY,
+                Lifetime.PERSISTENT,
+                ERROR_POLICY,
+                eventName,
+                index -> index.idEquals(target),
+                event
+        );
+    }
+
 	public static void registerMultiJson(String eventName, Predicate<Index> resourcePredicate, Event<JsonElement> event) {
 		Mixson.registerEvent(
 				MixsonCodecs.JSON_ELEMENT,
