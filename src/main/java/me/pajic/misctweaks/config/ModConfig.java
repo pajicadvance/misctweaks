@@ -65,6 +65,8 @@ public class ModConfig extends Config {
 			new AnimalConfig(Identifier.withDefaultNamespace("wolf"), false)
 	);
     public ValidatedBoolean randomizeDiscLoot = new ValidatedBoolean();
+    @RequiresAction(action = Action.RESTART)
+    public ValidatedBoolean ocelotSpawnFix = new ValidatedBoolean();
     public ValidatedBoolean preventShulkerDuplication = new ValidatedBoolean(false);
     //? <26.1 {
     /*@RequiresAction(action = Action.RESTART)

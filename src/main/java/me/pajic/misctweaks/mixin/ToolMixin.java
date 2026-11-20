@@ -24,8 +24,11 @@ public class ToolMixin {
 	)
 	private <T> Object modifyMiningSpeed(T original, @Local(argsOnly = true) BlockState state) {
 		return MiscTweaks.CONFIG.fasterObsidianMining.get() && MiscTweaks.CONFIG.obsidianBlocks.get().stream().anyMatch(id -> {
-            if (id.startsWith("#")) return state.is(TagKey.create(Registries.BLOCK, Identifier.parse(id.substring(1))));
-            else return state.is(ResourceKey.create(Registries.BLOCK, Identifier.parse(id)));
+            boolean isTag = id.startsWith("#");
+            Identifier parsed = Identifier.tryParse(isTag ? id.substring(1) : id);
+            if (parsed == null) return false;
+            if (isTag) return state.is(TagKey.create(Registries.BLOCK, parsed));
+            else return state.is(ResourceKey.create(Registries.BLOCK, parsed));
         }) ? MiscTweaks.CONFIG.obsidianMiningSpeedMultiplier.get() * (float) original : original;
 	}
 }

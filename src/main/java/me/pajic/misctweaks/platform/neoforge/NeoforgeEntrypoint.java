@@ -3,7 +3,9 @@ package me.pajic.misctweaks.platform.neoforge;
 //? neoforge {
 
 /*import me.pajic.misctweaks.MiscTweaks;
+import me.pajic.misctweaks.MiscTweaksClient;
 import me.pajic.misctweaks.util.ModUtil;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
@@ -21,6 +23,10 @@ import net.neoforged.neoforge.event.AddPackFindersEvent;
 @Mod(MiscTweaks.MOD_ID)
 @EventBusSubscriber(modid = MiscTweaks.MOD_ID)
 public class NeoforgeEntrypoint {
+
+    public NeoforgeEntrypoint(Dist dist) {
+        if (dist.isClient()) MiscTweaksClient.onInitialize();
+    }
 
 	@SubscribeEvent
 	private static void onCommonSetup(FMLCommonSetupEvent event) {

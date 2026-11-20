@@ -36,6 +36,11 @@ public class AnimalConfig implements Walkable {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof AnimalConfig ac && ac.id.equals(id);
+		return obj instanceof AnimalConfig ac && ac.id.get().equals(id.get());
+	}
+
+	@Override
+	public int hashCode() {
+		return id.get().hashCode();
 	}
 }

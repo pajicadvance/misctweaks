@@ -26,6 +26,8 @@
   "misctweaks.config.obsidianMiningSpeedMultiplier": "Obsidian mining speed multiplier",
   "misctweaks.config.obsidianBlocks": "Obsidian blocks",
   "misctweaks.config.preventShulkerDuplication": "Prevent shulker duplication",
+  "misctweaks.config.ocelotSpawnFix": "Ocelot spawn fix",
+  "misctweaks.config.ocelotSpawnFix.desc": "Ocelots spawn as creatures instead of monsters, so they no longer count towards the hostile mob cap in jungles.",
   "misctweaks.config.flammableCobweb": "Flammable cobwebs",
   "misctweaks.config.flammableBlocks": "Flammable blocks",
   "misctweaks.config.flammableBlocks.desc": "Add additional flammable blocks and edit ignite and burn odds.",
@@ -37,7 +39,7 @@
   "misctweaks.config.stableBlockDrops": "Stable block drops",
   "misctweaks.config.stableBlockDrops.noRandomHorizontalMovement": "No random horizontal movement",
   "misctweaks.config.stableBlockDrops.alwaysSpawnDropInBlockCenter": "Always spawn in center of block",
-  "misctweaks.config.stableBlockDrops.flingTowardsPlayer": "Fling towards nearest player",
+  "misctweaks.config.stableBlockDrops.flingTowardsPlayer": "Fling towards player",
   "misctweaks.config.stableBlockDrops.requireCrouchForFling": "Require crouching for fling",
   "misctweaks.config.stableBlockDrops.flingMaxRange": "Max fling range",
   "misctweaks.config.improvedSaplings": "Improved saplings",
@@ -84,5 +86,7 @@
   "misctweaks.client_config.raiseHotbarPixels.desc": "Raises the hotbar from the bottom of the screen. Drag all the way to the left to disable.",
   "misctweaks.client_config.raiseHotbarPixels.value": "By %s pixels",
   "misctweaks.client_config.raiseHotbarPixels.disabled": "Don't raise",
-  "misctweaks.client_config.raiseHotbarPixels.raisedInstalled": "The mod \"Raised\" is installed, which is incompatible with this feature."
+  "misctweaks.client_config.raiseHotbarPixels.raisedInstalled": "The mod \"Raised\" is installed, which is incompatible with this feature.",
+  "misctweaks.client_config.limitAmbientSoundRange": "Ambient sound range fix",
+  "misctweaks.client_config.limitAmbientSoundRange.desc": "Trial spawners and potent sulfur blocks play their ambient sounds at infinite range, even though they can only be heard from 16 and 32 blocks afar respectfully, causing the game to hit the sound limit and stop playing sounds when too many of those blocks are around. This option limits their range to 16 and 32."
 }

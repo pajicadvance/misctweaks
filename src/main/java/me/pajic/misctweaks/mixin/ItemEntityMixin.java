@@ -2,12 +2,11 @@ package me.pajic.misctweaks.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
 import me.pajic.misctweaks.MiscTweaks;
+import me.pajic.misctweaks.util.ModUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -24,11 +23,18 @@ public class ItemEntityMixin {
 					target = "Lnet/minecraft/world/entity/item/ItemEntity;setDeltaMovement(DDD)V"
 			)
 	)
-	private void stabilizeDrop(ItemEntity instance, double x, double y, double z, Operation<Void> original, @Local(argsOnly = true) Level level) {
+	private void stabilizeDrop(ItemEntity instance, double x, double y, double z, Operation<Void> original) {
+		Player player = ModUtil.blockBreaker;
+		if (!ModUtil.poppingBlockResource || player == null) {
+			original.call(instance, x, y, z);
+			return;
+		}
 		if (MiscTweaks.CONFIG.stableBlockDrops.flingTowardsPlayer.get()) {
 			double maxRange = MiscTweaks.CONFIG.stableBlockDrops.flingMaxRange.get();
-			Player player = level.getNearestPlayer((ItemEntity) (Object) this, maxRange);
-			if (player != null && (!MiscTweaks.CONFIG.stableBlockDrops.requireCrouchForFling.get() || player.isShiftKeyDown())) {
+			if (
+					player.distanceToSqr(instance) <= maxRange * maxRange &&
+					(!MiscTweaks.CONFIG.stableBlockDrops.requireCrouchForFling.get() || player.isShiftKeyDown())
+			) {
 				double xa = player.getX() - instance.getX();
 				double ya = player.getY() - instance.getY();
 				double za = player.getZ() - instance.getZ();

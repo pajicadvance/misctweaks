@@ -6,19 +6,25 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FireBlock;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ModUtil {
 
     public static final List<String> BLOCK_SUGGESTIONS = new ArrayList<>();
+    public static boolean suppressEnchantmentItemDamage = false;
+    public static boolean poppingBlockResource = false;
+    public static @Nullable Player blockBreaker = null;
 
 	public static final List<Item> DISCS = List.of(
 			Items.MUSIC_DISC_13,
@@ -48,20 +54,28 @@ public class ModUtil {
             FireBlock fire = (FireBlock) Blocks.FIRE;
             MiscTweaks.CONFIG.flammableBlocks.get().forEach(entry -> {
                 String id = entry.id.get();
-                if (id.startsWith("#")) {
-                    registry.getTagOrEmpty(TagKey.create(Registries.BLOCK, Identifier.parse(id.substring(1))))
+                boolean isTag = id.startsWith("#");
+                Identifier parsed = Identifier.tryParse(isTag ? id.substring(1) : id);
+                if (parsed == null) {
+                    MiscTweaks.LOGGER.warn("Invalid id '{}' in flammable blocks config, skipping", id);
+                    return;
+                }
+                if (isTag) {
+                    registry.getTagOrEmpty(TagKey.create(Registries.BLOCK, parsed))
                             .forEach(blockHolder -> ((FireBlockInvoker) fire).mt$invokeSetFlammable(
-                                    //~ if <26.1 'registry.getValue' -> 'registry.get'
                                     blockHolder.value(),
                                     entry.igniteOdds.get(),
                                     entry.burnOdds.get()
                             ));
-                } else ((FireBlockInvoker) fire).mt$invokeSetFlammable(
-                        //~ if <26.1 'registry.getValue' -> 'registry.get'
-                        registry.getValue(Identifier.parse(id)),
-                        entry.igniteOdds.get(),
-                        entry.burnOdds.get()
-                );
+                } else {
+                    Optional<Block> block = registry.getOptional(parsed);
+                    if (block.isPresent()) ((FireBlockInvoker) fire).mt$invokeSetFlammable(
+                            block.get(),
+                            entry.igniteOdds.get(),
+                            entry.burnOdds.get()
+                    );
+                    else MiscTweaks.LOGGER.warn("Unknown block '{}' in flammable blocks config, skipping", id);
+                }
             });
         }
     }

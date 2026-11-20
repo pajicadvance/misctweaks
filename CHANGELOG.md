@@ -1,1 +1,25 @@
-- Lodestone changes and craftable saddle backports now exist in 1.21.1 versions again (I definitely didn't remove them by accident).
+- Added NeoForge 26.3 version.
+- Added "Ocelot spawn fix" option: Ocelots now spawn as creatures instead of monsters in jungles and bamboo jungles, so they no longer count towards the hostile mob cap. Enabled by default.
+- Added "Ambient sound range fix" option: Trial spawners and potent sulfur blocks play their ambient sounds at infinite range, even though they can only be heard from 16 and 32 blocks afar respectfully, causing the game to hit the sound limit and stop playing sounds when too many of those blocks are around. This option limits their range to 16 and 32.
+- Fixed the "No thorns chestplate damage" option not doing anything.
+- Fixed unknown or removed block ids in the "Flammable blocks" option making air flammable, which caused fire to spread endlessly.
+- Fixed invalid ids in the "Flammable blocks" and "Obsidian blocks" options crashing the game.
+- Fixed animal food search breaking the normal item pickup behavior of foxes and pandas.
+- Fixed foxes and pandas permanently losing the ability to pick up items after searching for food.
+- Fixed the "Search goal priority" animal option not doing anything. Animals searching for food also no longer get interrupted by wandering around.
+- Animals searching for food now ignore food they can't reach, instead of repeatedly trying to path to it.
+- Animals searching for food now eat it even when the `mobGriefing` game rule is disabled.
+- Animals can now eat food items that are slightly above or below them, such as on slabs or carpets.
+- Animals now keep following food items that move, such as items in flowing water.
+- Multiple animals now spread out between nearby food items instead of all going for the same one.
+- Sitting pets no longer search for food.
+- Improved animal food search performance.
+- Fixed duplicate entries being allowed in the "Per-animal configuration" and "Flammable blocks" options.
+- Fixed shield lowering and raise hotbar sometimes not applying until resources were reloaded on NeoForge 1.21.1.
+- Lowered shield now works correctly for left-handed players.
+- "Lower shield in offhand" and "Shield list" settings now apply instantly, without reloading resources. The shield offset is now relative to the shield's default position, which only matters for modded shields.
+- Stable block drops now only affect blocks broken by players, instead of all dropped items (mob drops, items spit out by foxes, blocks broken by cactus growth, etc.). This fixes automated cactus farms not collecting any drops.
+- Stable block drops now fling items towards the player who broke the block, instead of the nearest player.
+- Fixed a crash on world creation when the lodestone changes backport conflicts with another mod or data pack on 1.21.1. Conflicting parts of the backport are now skipped and logged instead.
+- Fixed saddles not being replaced with leather in ancient city, desert pyramid, jungle temple, dungeon and stronghold corridor chests when "Craftable saddle backport" is enabled on 1.21.1.
+- Riders no longer take damage from berry bushes when their mount is wearing armor, if "Armor prevents berry bush damage" is enabled.

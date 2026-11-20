@@ -1,7 +1,5 @@
 package me.pajic.misctweaks.mixson;
 
-import com.google.gson.JsonPrimitive;
-import me.pajic.misctweaks.MiscTweaksClient;
 import me.pajic.misctweaks.util.ModClientUtil;
 
 import java.awt.*;
@@ -11,27 +9,6 @@ import java.util.Arrays;
 public class AssetPatches {
 
 	public static void init() {
-		MiscTweaksClient.CONFIG.shields.forEach(entry -> {
-			String namespace = entry.id.get().getNamespace();
-			String path = entry.id.get().getPath();
-			MixsonHelper.registerMultiJson(
-					"Patch shield models",
-					index -> index.id().getNamespace().equals(namespace) && index.id().getPath().equals("models/item/" + path),
-					context -> {
-						if (
-								MiscTweaksClient.CONFIG.lowerShield.get() &&
-								context.getFile().getAsJsonObject().has("display") &&
-								context.getFile().getAsJsonObject().getAsJsonObject("display").has("firstperson_lefthand")
-						) {
-							context.getFile().getAsJsonObject()
-									.getAsJsonObject("display")
-									.getAsJsonObject("firstperson_lefthand")
-									.getAsJsonArray("translation")
-									.set(1, new JsonPrimitive(entry.offset.get()));
-						}
-					}
-			);
-		});
 		MixsonHelper.registerSingleTexture(
 				"Patch hotbar selection sprite",
 				"minecraft:textures/gui/sprites/hud/hotbar_selection",

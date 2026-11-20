@@ -28,6 +28,11 @@ public class FlammableBlockEntry implements Walkable {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof FlammableBlockEntry fbe && fbe.id.equals(id);
+		return obj instanceof FlammableBlockEntry fbe && fbe.id.get().equals(id.get());
+	}
+
+	@Override
+	public int hashCode() {
+		return id.get().hashCode();
 	}
 }

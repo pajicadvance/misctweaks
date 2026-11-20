@@ -3,6 +3,7 @@ package me.pajic.misctweaks;
 import me.fzzyhmstrs.fzzy_config.api.ConfigApiJava;
 import me.pajic.misctweaks.config.ModConfig;
 import me.pajic.misctweaks.mixson.MixsonHelper;
+import me.pajic.misctweaks.mixson.SpawnPatches;
 import me.pajic.misctweaks.platform.MultiLoaderUtil;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ public class MiscTweaks {
 
     public static void onInitialize() {
         MixsonHelper.setDebugFlags();
+        SpawnPatches.init();
         //? <26.1
         //DataPatches.init();
     }

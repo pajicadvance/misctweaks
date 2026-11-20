@@ -29,17 +29,16 @@ public class ModClientConfig extends Config {
 		);
     }
 
-    @RequiresAction(action = Action.RELOAD_RESOURCES)
     public ValidatedBoolean lowerShield = new ValidatedBoolean();
-    @RequiresAction(action = Action.RELOAD_RESOURCES)
     public ValidatedSet<LoweredShieldEntry> shields = loweredShieldEntry.toSet(
 			new LoweredShieldEntry(Identifier.withDefaultNamespace("shield"), -4.0F)
 	);
 	@RequiresAction(action = Action.RELOAD_RESOURCES)
 	public ValidatedInt raiseHotbarPixels = new ValidatedInt(2, 24, 0);
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public ValidatedMap<String, Integer> perDimensionBrightness = (new ValidatedMap.Builder())
-			.keyHandler(new ValidatedString())
-			.valueHandler(new ValidatedInt(50, 100, -1))
-			.build();
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public ValidatedMap<String, Integer> perDimensionBrightness = (new ValidatedMap.Builder())
+            .keyHandler(new ValidatedString())
+            .valueHandler(new ValidatedInt(50, 100, -1))
+            .build();
+	public ValidatedBoolean limitAmbientSoundRange = new ValidatedBoolean();
 }

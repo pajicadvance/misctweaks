@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
 //? >=26.1
@@ -31,12 +32,13 @@ public class SweetBerryBushBlockMixin {
                     //target = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z"
             )
     )
-    private boolean preventDamageIfSneakingOrWearingLegArmor(Entity instance,/*? >=26.1 {*/ ServerLevel level,/*?}*/ DamageSource source, float amount, Operation<Boolean> original) {
+    private boolean preventDamage(Entity instance,/*? >=26.1 {*/ ServerLevel level,/*?}*/ DamageSource source, float amount, Operation<Boolean> original) {
         if (instance instanceof Player p) {
             if ((MiscTweaks.CONFIG.sneakingPreventsBerryBushDamage.get() && p.isShiftKeyDown())) return false;
         }
-		if (instance instanceof LivingEntity l && MiscTweaks.CONFIG.armorPreventsBerryBushDamage.get()) {
-			if (l.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR) || l.hasItemInSlot(EquipmentSlot.BODY)) return false;
+		if (MiscTweaks.CONFIG.armorPreventsBerryBushDamage.get()) {
+			if (instance instanceof LivingEntity l && mt$isProtected(l)) return false;
+			if (instance.getVehicle() instanceof LivingEntity vehicle && mt$isProtected(vehicle)) return false;
 		}
         return original.call(instance,/*? >=26.1 {*/ level,/*?}*/ source, amount);
     }
@@ -48,9 +50,9 @@ public class SweetBerryBushBlockMixin {
 					target = "Lnet/minecraft/world/entity/Entity;makeStuckInBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)V"
 			)
 	)
-	private void reduceSlowEffectWhenWearingLegArmor(Entity instance, BlockState blockState, Vec3 speedMultiplier, Operation<Void> original) {
+	private void reduceSlowEffect(Entity instance, BlockState blockState, Vec3 speedMultiplier, Operation<Void> original) {
 		if (MiscTweaks.CONFIG.armorReducesBerryBushSlow.get() && instance instanceof LivingEntity l) {
-			if (l.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR) || l.hasItemInSlot(EquipmentSlot.BODY)) {
+			if (mt$isProtected(l)) {
 				double d = MiscTweaks.CONFIG.berryBushSlowReduction.get();
 				if (d == 2.2) return;
 				original.call(instance, blockState, speedMultiplier.multiply(d, d, d));
@@ -58,5 +60,10 @@ public class SweetBerryBushBlockMixin {
 			}
 		}
 		original.call(instance, blockState, speedMultiplier);
+	}
+
+	@Unique
+	private static boolean mt$isProtected(LivingEntity entity) {
+		return entity.getItemBySlot(EquipmentSlot.LEGS).is(ItemTags.LEG_ARMOR) || entity.hasItemInSlot(EquipmentSlot.BODY);
 	}
 }
